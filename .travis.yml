@@ -3,9 +3,9 @@ sudo: required
 dist: trusty
 env:
   global:
-    - MASTER_VER=latest DEV_VER=test
-    - secure: Gnca7mPWCNM0aGZv+xymqzWc5W2JRJf0aBvyuLzD7qdAVDSrM2aKbYi13pGme6qu+Cl3c54CFFGBkTRSWp7KfP94F8St/THTyvbS3hecJokaB5hCZEz5sK7ColXldIAYHzSOlzT8xa3A10Rpc/I0xKUpZqsyLXKBvEm+k+Zmgp8lj9YuoY3ScCmondN99+KiZ/Z8T6gYNZsmNTCVLZz16e/nSEu8DLad+0mG/paI9SMPvPT6/D8JnXXMtCHCszcxfTRO75cOo4eTgyKbRFSOuEZta6vouY9Ve21TJlKiKR3+/T3ewr0JF4qGBhAmXAidYss2X9qNFtALu6SAn32tfvvhiJk3zz8OrrE54gCjUKpQS0sD7VHlUR/wfTZ6IC+YbeE9LYVMcn/hSW1Iy82eBqeD2dvH7FbILmLKzDJ0OZjKJ4e5ZF9/SEaRTy6RaYsXxGQX2ZYs/uICCH5L88uibKHgLD7Ai75M3QRI6TqfcLJqt9xQPsVZRBLXffiZjVIRXhAB/g3I9jVbPyfVr6+xxsOFhHESRS8YE9w9iLvT5koSuA03lj+rec7vsImY+xnKy9fTzZsL5ypYhARwp+PsX8CB8rd0DbquRc6h33PX5Cu093q4ROVepM+C1R4ueIeDHxphlpOE6qbQ+A9nzk8EPHOTsNWqER3hjH+y66GX0mU=
-    - secure: Lnb3Yf0HygGdTXtuiNejDC9reGZt+sUsZcXen/DLDM4y9hQ59KnNN38aZm2I5sYcARydZPyMosaZ6bQdZ8IVy0tJ35QjwRUxLatZY77H88cezqQStDt/sS22OUV/16qRv1RM6lIyqu++BrHHIp2X9tzThA3VOFtry4bZPbs+8LWxfMlnlWBHVAz4aIq6gpPMiaMrz9U8aWb47vF0vNJJJfdrFtPvQ8rs+Uwuhe5X5lFaGlHO7MjGi7lmXu4S5cvd3/Huf1er2ZUc6hLe2AgzQ+cosCnw1JNq1GTwzw1/8QT8E6X5E8zckoKe7poAzmFlhL0rBppu/+vbpkEofuhiRGjrBxvnDjR1V1yQrFV/xZC06jbAlpg9+1F28sHgukpg+/j/bnz4dHX0YWk0m1/w8JtKUQMVrddJ7jJtu0pllmrwJWxp4qYXoVm8J7Og+lsA7e41IcAtMbEy1WflwTdLygP+Y4Xash/gWOTXOyt14Wl9rMoW/s6+azrRl4GFLDNegfdu2SCMFtIa4Nk7hZt1XtrUDq0u6bBSDFMUC+mfcDsMsSpBCxQf+TTTge6F8vE8Qtx45qzel6nrPNife4mZV2FNJoLNqG8+2qD5UAl8rvKPkR0RLe4W8T0DM1RhWbqNlMG5v57b5wl0SSjQ0gPutC3LFMyd/+mpREVtelX9OKc=
+  - MASTER_VER=latest DEV_VER=test
+  - secure: p45M3or+Mo8A2yCtiUpkLInyigO0UE4R26Mpx9bEd2RDIillhFlHeK4EFsGjT7GI4QFz2nrfPvyQfmHlw3Tb5ZxtIC5nb2qonoh4mUF9A2LgWCXYISYttW6msuMREU5iTBzdDY1Ki6cRGUuO505Vp3oGrQQ5OwmwYg8vdS8fSajpXjQLJdZOlXdnSeSvbRB6PakXe7G5FcKy4imwp/f1gU3IejwbLv8TJT8ogk68qeyf6fUhL1yPYeddX+giqrOUzqVBZphDjaEvrGWBIZ+xau2zwBap5PYCU3v2Z50MCw7uTP3g3ST0STXHGGPvfm7PJv6wBKMhrroakV8uykxW4Q4DalCvRMhTX+EYHxpyOtZ2RuvzbkskRBX09XQlvcq9VfJI8OoqzXs//VCxouhEpFk1kP/70O+eBUDXKRmI7GoYw+1dbO3zzn9bEwD0711iCp9cU31fJz846eE5mo6IQtcq+m1x2ZJkl1GiPinjKSjnZUR42WMve/kAGFQzvmOpy5uf4E56Yn7EoQq2DT521FWNO48X7XBLsUM3b2+CqPGBJu4bef1kAwTMiDp3dUAN/DuWMB9mC9ZZ0dLOqLTRO/4NXMRNvCNQUQkwHBi0Ti7AHXokdpnNVbMc4ur1cxG0DI0xV2QFSD3wKfhrk+vOS6/HpRPE0RdyaqlO8PzDYwU=
+  - secure: XUc4GItVlBmAuAmch1doDgWqFZi3PNr17kI9oVdHLmGaMisb+f6sOtbQ43RFpV+Ul2dow5NtVM73jMLF0SbHVQsT58a8GltHZSr8Ll67y/vKRTFlqhKbcTay+TjrC2urs0QYu0UE8JAF+kegdXeVMc5460Z6jWDMaiuh2TD8I01lntfnQGSQh1DY1dqBOQ6DVjiAdWAfhDEoUZFqR8GDsMUUjk3S4u5rjeSDwCgtPJOBktVl7rS7VBZilzyulj+7/uAiSJfUaDCCLFR/xNTY7PHu4NtHswaNTJKVBvFoheG4qaywE8Nl8Wi1Oa3H5fjSGMfdDTo8KyUua1XsgTV/JPImDy+Eb/Ddw1JMoyc9GpnCaI+jUl+jE4uc+QiCvqLLMhQiU0+h33A90QM+WZMplFsCmTLq8tkrqZQNT5krifP26ifu+zCwhMNZ+JL4ADcb3eMeR2SnhW4SsAFPYs2N79mVO9qtlJqUu1+i4wO2aNowlDb8XKQvbK1gR4ouoM2+dqu4tYkpjUDmNxgD31s6EJzSo4iSVZ6iR+cAvN81nIxJg3juvFX8qODlAov3dFKKfQxvCPb8oM6x7usnVK2XVCH1zPUY9wc+CfVX7hyBqZCAo/GUY9Il6VFtT8kvb+/CvBxsrNSavp+qKkZM6qbN22+hR+p4mhT2Z/na3gosLZ4=
 branches:
   only:
   - master
@@ -14,20 +14,18 @@ branches:
 services:
 - docker
 install: true
-script: ./src/build.sh
+script: "./src/build.sh"
 deploy:
-  - provider: script
-    script: bash src/deploy.sh $DOCKER_USER $DOCKER_PASS $MASTER_VER
-    on:
-      branch: master
-      
-  - provider: script
-    script: bash src/deploy.sh $DOCKER_USER $DOCKER_PASS $DEV_VER
-    on:
-      branch: develop
-  
-  - provider: script
-    script: bash src/deploy.sh $DOCKER_USER $DOCKER_PASS $TRAVIS_TAG
-    on:
-      tags: true
+- provider: script
+  script: bash src/deploy.sh $DOCKER_USER $DOCKER_PASS $MASTER_VER
+  on:
+    branch: master
+- provider: script
+  script: bash src/deploy.sh $DOCKER_USER $DOCKER_PASS $DEV_VER
+  on:
+    branch: develop
+- provider: script
+  script: bash src/deploy.sh $DOCKER_USER $DOCKER_PASS $TRAVIS_TAG
+  on:
+    tags: true
 all_branches: true
