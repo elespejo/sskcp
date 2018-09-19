@@ -1,6 +1,6 @@
 #!/bin/bash
 filename="$0"
-image="elespejo/sskcp"
+image="elespejo/sskcp-x86"
 version="test"
 container="sskcp-redir"
 cmd="supervisord -c /service.conf.d/sskcp-redir.conf"
