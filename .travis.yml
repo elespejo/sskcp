@@ -1,0 +1,33 @@
+language: generic
+sudo: required
+dist: trusty
+env:
+  global:
+    - MASTER_VER=latest DEV_VER=test
+    - secure: Gnca7mPWCNM0aGZv+xymqzWc5W2JRJf0aBvyuLzD7qdAVDSrM2aKbYi13pGme6qu+Cl3c54CFFGBkTRSWp7KfP94F8St/THTyvbS3hecJokaB5hCZEz5sK7ColXldIAYHzSOlzT8xa3A10Rpc/I0xKUpZqsyLXKBvEm+k+Zmgp8lj9YuoY3ScCmondN99+KiZ/Z8T6gYNZsmNTCVLZz16e/nSEu8DLad+0mG/paI9SMPvPT6/D8JnXXMtCHCszcxfTRO75cOo4eTgyKbRFSOuEZta6vouY9Ve21TJlKiKR3+/T3ewr0JF4qGBhAmXAidYss2X9qNFtALu6SAn32tfvvhiJk3zz8OrrE54gCjUKpQS0sD7VHlUR/wfTZ6IC+YbeE9LYVMcn/hSW1Iy82eBqeD2dvH7FbILmLKzDJ0OZjKJ4e5ZF9/SEaRTy6RaYsXxGQX2ZYs/uICCH5L88uibKHgLD7Ai75M3QRI6TqfcLJqt9xQPsVZRBLXffiZjVIRXhAB/g3I9jVbPyfVr6+xxsOFhHESRS8YE9w9iLvT5koSuA03lj+rec7vsImY+xnKy9fTzZsL5ypYhARwp+PsX8CB8rd0DbquRc6h33PX5Cu093q4ROVepM+C1R4ueIeDHxphlpOE6qbQ+A9nzk8EPHOTsNWqER3hjH+y66GX0mU=
+    - secure: Lnb3Yf0HygGdTXtuiNejDC9reGZt+sUsZcXen/DLDM4y9hQ59KnNN38aZm2I5sYcARydZPyMosaZ6bQdZ8IVy0tJ35QjwRUxLatZY77H88cezqQStDt/sS22OUV/16qRv1RM6lIyqu++BrHHIp2X9tzThA3VOFtry4bZPbs+8LWxfMlnlWBHVAz4aIq6gpPMiaMrz9U8aWb47vF0vNJJJfdrFtPvQ8rs+Uwuhe5X5lFaGlHO7MjGi7lmXu4S5cvd3/Huf1er2ZUc6hLe2AgzQ+cosCnw1JNq1GTwzw1/8QT8E6X5E8zckoKe7poAzmFlhL0rBppu/+vbpkEofuhiRGjrBxvnDjR1V1yQrFV/xZC06jbAlpg9+1F28sHgukpg+/j/bnz4dHX0YWk0m1/w8JtKUQMVrddJ7jJtu0pllmrwJWxp4qYXoVm8J7Og+lsA7e41IcAtMbEy1WflwTdLygP+Y4Xash/gWOTXOyt14Wl9rMoW/s6+azrRl4GFLDNegfdu2SCMFtIa4Nk7hZt1XtrUDq0u6bBSDFMUC+mfcDsMsSpBCxQf+TTTge6F8vE8Qtx45qzel6nrPNife4mZV2FNJoLNqG8+2qD5UAl8rvKPkR0RLe4W8T0DM1RhWbqNlMG5v57b5wl0SSjQ0gPutC3LFMyd/+mpREVtelX9OKc=
+branches:
+  only:
+  - master
+  - develop
+  - "/^\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
+services:
+- docker
+install: true
+script: ./src/build.sh
+deploy:
+  - provider: script
+    script: bash src/deploy.sh $DOCKER_USER $DOCKER_PASS $MASTER_VER
+    on:
+      branch: master
+      
+  - provider: script
+    script: bash src/deploy.sh $DOCKER_USER $DOCKER_PASS $DEV_VER
+    on:
+      branch: develop
+  
+  - provider: script
+    script: bash src/deploy.sh $DOCKER_USER $DOCKER_PASS $TRAVIS_TAG
+    on:
+      tags: true
+all_branches: true
