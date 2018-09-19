@@ -5,7 +5,7 @@ PASS="$2"
 TAG="$3"
 
 ORG="elespejo"
-REPO="sskcp"
+REPO="sskcp-x86"
 
 
 docker tag $REPO $ORG/$REPO:$TAG 
