@@ -1,3 +1,2 @@
 #!/bin/bash
-arch="$1"
-docker build -t elespejo/sskcp-$arch:test ./src
+docker build -t elespejo/sskcp-x86:test ./src
