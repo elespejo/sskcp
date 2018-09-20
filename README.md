@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="250" src="https://www.lucidchart.com/publicSegments/view/acf1287b-07f1-4ac9-8efe-a82eec2a9e73/image.png">
+  <img src="https://www.lucidchart.com/publicSegments/view/acf1287b-07f1-4ac9-8efe-a82eec2a9e73/image.png">
 </p>
 
 <h1 align="center"> sskcp </h1>
