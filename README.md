@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="250" src="https://www.lucidchart.com/publicSegments/view/acf1287b-07f1-4ac9-8efe-a82eec2a9e73/image.png">
+  <img src="https://www.lucidchart.com/publicSegments/view/acf1287b-07f1-4ac9-8efe-a82eec2a9e73/image.png">
 </p>
 
 <h1 align="center"> sskcp </h1>
@@ -35,7 +35,7 @@ For armv6 : `pip install docker-compose`
   - Start sskcp client or server.  
     Client:
     ```bash
-    $ ./client-ctl start
+    $ docker-compose -f docker-compose-client.yml up -d
     ```
     Server:
     ```bash
@@ -45,7 +45,7 @@ For armv6 : `pip install docker-compose`
   - Check status of sskcp client or server.  
     Client:
     ```bash
-    $ ./client-ctl status
+    $ ./check_status.sh 
     ```
     Server:
     ```bash
@@ -55,7 +55,7 @@ For armv6 : `pip install docker-compose`
   - Stop the sskcp client or server.  
     Client:
     ```bash
-    $ ./client-ctl stop
+    $ docker-compose -f docker-compose-client.yml down
     ```
     Server:
     ```bash
@@ -86,7 +86,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ### Authors
 * **AUTHOR** - *Initial work* - [mateomartin1998](https://github.com/mateomartin1998)
-* **AUTHOR** - *improvement* - [Valerio-Perez](https://github.com/valerio-Perez)
+* **AUTHOR** - *Improvement* - [Valerio-Perez](https://github.com/valerio-Perez)
 
 See also the list of [contributors](https://github.com/elespejo/sskcp/graphs/contributors) who participated in this project.
 
