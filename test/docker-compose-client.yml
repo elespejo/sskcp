@@ -1,0 +1,18 @@
+version: '3.7'
+services: 
+  sskcp-client:
+    image: elespejo/sskcp-x86:${IMG_VERSION_X86}
+
+    ports:
+      - ${HOST_PORT}:${CONTAINER_PORT}
+
+    volumes: 
+      - type: bind
+        source: ${PWD}/${C_CONF_X86}
+        target: /clientconf
+
+      - type: bind
+        source: ${PWD}/${LOG_VOL}
+        target: /clientlog
+      
+    command: ${C_CMD}
