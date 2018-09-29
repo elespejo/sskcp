@@ -1,4 +1,4 @@
-FROM elespejo/armv6-x86-alpine-base:0.1.2
+FROM elespejo/armv6-x86-alpine-base:0.2.0
 
 # build shadowsocks-libev
 ENV SS_VER 3.2.0 
