@@ -53,7 +53,7 @@ RUN apk update && \
 
 RUN apk add --update supervisor
 RUN mkdir /service.conf.d
-ADD sskcp-redir.conf sskcp-server.conf /service.conf.d/
+ADD sskcp-redir-x86.conf sskcp-server-x86.conf /service.conf.d/
 
 CMD /bin/bash
 
