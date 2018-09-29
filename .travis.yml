@@ -3,8 +3,8 @@ sudo: required
 dist: trusty
 env:
   matrix:
-    ARCH=armv6
-    ARCH=x86
+    - ARCH=armv6
+    - ARCH=x86
   global:
   - secure: p45M3or+Mo8A2yCtiUpkLInyigO0UE4R26Mpx9bEd2RDIillhFlHeK4EFsGjT7GI4QFz2nrfPvyQfmHlw3Tb5ZxtIC5nb2qonoh4mUF9A2LgWCXYISYttW6msuMREU5iTBzdDY1Ki6cRGUuO505Vp3oGrQQ5OwmwYg8vdS8fSajpXjQLJdZOlXdnSeSvbRB6PakXe7G5FcKy4imwp/f1gU3IejwbLv8TJT8ogk68qeyf6fUhL1yPYeddX+giqrOUzqVBZphDjaEvrGWBIZ+xau2zwBap5PYCU3v2Z50MCw7uTP3g3ST0STXHGGPvfm7PJv6wBKMhrroakV8uykxW4Q4DalCvRMhTX+EYHxpyOtZ2RuvzbkskRBX09XQlvcq9VfJI8OoqzXs//VCxouhEpFk1kP/70O+eBUDXKRmI7GoYw+1dbO3zzn9bEwD0711iCp9cU31fJz846eE5mo6IQtcq+m1x2ZJkl1GiPinjKSjnZUR42WMve/kAGFQzvmOpy5uf4E56Yn7EoQq2DT521FWNO48X7XBLsUM3b2+CqPGBJu4bef1kAwTMiDp3dUAN/DuWMB9mC9ZZ0dLOqLTRO/4NXMRNvCNQUQkwHBi0Ti7AHXokdpnNVbMc4ur1cxG0DI0xV2QFSD3wKfhrk+vOS6/HpRPE0RdyaqlO8PzDYwU=
   - secure: XUc4GItVlBmAuAmch1doDgWqFZi3PNr17kI9oVdHLmGaMisb+f6sOtbQ43RFpV+Ul2dow5NtVM73jMLF0SbHVQsT58a8GltHZSr8Ll67y/vKRTFlqhKbcTay+TjrC2urs0QYu0UE8JAF+kegdXeVMc5460Z6jWDMaiuh2TD8I01lntfnQGSQh1DY1dqBOQ6DVjiAdWAfhDEoUZFqR8GDsMUUjk3S4u5rjeSDwCgtPJOBktVl7rS7VBZilzyulj+7/uAiSJfUaDCCLFR/xNTY7PHu4NtHswaNTJKVBvFoheG4qaywE8Nl8Wi1Oa3H5fjSGMfdDTo8KyUua1XsgTV/JPImDy+Eb/Ddw1JMoyc9GpnCaI+jUl+jE4uc+QiCvqLLMhQiU0+h33A90QM+WZMplFsCmTLq8tkrqZQNT5krifP26ifu+zCwhMNZ+JL4ADcb3eMeR2SnhW4SsAFPYs2N79mVO9qtlJqUu1+i4wO2aNowlDb8XKQvbK1gR4ouoM2+dqu4tYkpjUDmNxgD31s6EJzSo4iSVZ6iR+cAvN81nIxJg3juvFX8qODlAov3dFKKfQxvCPb8oM6x7usnVK2XVCH1zPUY9wc+CfVX7hyBqZCAo/GUY9Il6VFtT8kvb+/CvBxsrNSavp+qKkZM6qbN22+hR+p4mhT2Z/na3gosLZ4=
@@ -32,4 +32,4 @@ deploy:
   script: bash src/deploy.sh $DOCKER_USER $DOCKER_PASS $TRAVIS_TAG $ARCH
   on:
     tags: true
-all_branches: true
+    all_branches: true
