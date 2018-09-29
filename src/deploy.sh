@@ -6,9 +6,9 @@ TAG=$3
 ARCH=$4
 
 ORG=elespejo
-REPO=sskcp-$ARCH
 
+REPO=sskcp
 
-docker tag $REPO $ORG/$REPO:$TAG 
+docker tag $REPO-$ARCH $ORG/$REPO-$ARCH:$TAG 
 docker login -u $USER -p $PASS
-docker push $ORG/$REPO:$TAG
+docker push $ORG/$REPO-$ARCH:$TAG
