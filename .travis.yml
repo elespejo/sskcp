@@ -21,13 +21,10 @@ install: true
 script: "./src/build.sh ${ARCH}"
 deploy:
 - provider: script
-  script: bash src/deploy.sh $DOCKER_USER $DOCKER_PASS $MASTER_VER $ARCH
+  script: bash src/deploy.sh $DOCKER_USER $DOCKER_PASS $TRAVIS_BRANCH $ARCH
   on:
-    branch: master
-- provider: script
-  script: bash src/deploy.sh $DOCKER_USER $DOCKER_PASS $DEV_VER $ARCH
-  on:
-    branch: develop
+    all_branches: true
+    condition: "$TRAVIS_BRANCH =~ ^master|develop$"
 - provider: script
   script: bash src/deploy.sh $DOCKER_USER $DOCKER_PASS $TRAVIS_TAG $ARCH
   on:
