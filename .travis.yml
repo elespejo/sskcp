@@ -21,12 +21,12 @@ install: true
 script: make build ARCH=${ARCH}
 deploy:
 - provider: script
-  script: bash make deploy DOCKER_USER=${DOCKER_USER} DOCKER_PASS=${DOCKER_PASS} TAG=${TRAVIS_BRANCH} ARCH=${ARCH}
+  script: make deploy DOCKER_USER=${DOCKER_USER} DOCKER_PASS=${DOCKER_PASS} TAG=${TRAVIS_BRANCH} ARCH=${ARCH}
   on:
     all_branches: true
     condition: "$TRAVIS_BRANCH =~ ^master|develop$"
 - provider: script
-  script: bash make deploy DOCKER_USER=${DOCKER_USER} DOCKER_PASS=${DOCKER_PASS} TAG=${TRAVIS_TAG} ARCH=${ARCH}
+  script: make deploy DOCKER_USER=${DOCKER_USER} DOCKER_PASS=${DOCKER_PASS} TAG=${TRAVIS_TAG} ARCH=${ARCH}
   on:
     tags: true
     all_branches: true
