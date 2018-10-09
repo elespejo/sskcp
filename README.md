@@ -65,8 +65,7 @@ For armv6 : `pip install docker-compose`
 ### Build
 
   ```bash
-  $ cd src/
-  $ ./build.sh
+  $ make build
   ```
 
 ### Built With
