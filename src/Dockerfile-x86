@@ -38,7 +38,7 @@ RUN set -ex \
 RUN apk add --update bash
 
 # build kcptun
-ENV KCP_VER 20180810
+ENV KCP_VER 20181002
 ENV KCP_URL https://github.com/xtaci/kcptun/releases/download/v$KCP_VER/kcptun-linux-amd64-$KCP_VER.tar.gz
 
 RUN apk update && \
