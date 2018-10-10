@@ -23,8 +23,13 @@ clean-image:
 
 
 .PHONY: mk-deployment clean-deployment
-mk-deployment: $(DEPLOYMENT)
-	zip -r -j $(REPO).zip $(DEPLOYMENT) 
+mk-deployment-sskcp-client-x86: ${DEPLOYMENT}/sskcp-client-x86
+	zip -j sskcp-client-x86-${VERSION}.zip ${DEPLOYMENT}/sskcp-client-x86
+
+mk-deployment-sskcp-client-armv6: ${DEPLOYMENT}/sskcp-client-armv6
+	zip -j sskcp-client-armv6-${VERSION}.zip ${DEPLOYMENT}/sskcp-client-armv6
+
+mk-deployment: mk-deployment-sskcp-client-x86 mk-deployment-sskcp-client-armv6
 
 clean-deployment: $(REPO).zip
 	rm $(REPO).zip
