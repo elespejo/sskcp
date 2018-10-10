@@ -1,0 +1,17 @@
+version: '3.2'
+services: 
+  sskcp-client:
+    image: ${ORG}/${REPO}-${ARCH}:${IMG_VERSION}
+
+    restart: always
+    network_mode: "host"
+
+    volumes: 
+      - type: bind
+        source: ${CONF_DIR}
+        target: /clientconf
+      - type: bind
+        source: ${LOG_DIR}
+        target: /clientlog
+      
+    command: supervisord -c /service.conf.d/sskcp-redir-${ARCH}.conf
