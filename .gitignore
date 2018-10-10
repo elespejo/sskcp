@@ -1,2 +1,5 @@
 # client log
-test/clientlog/*
+deployment/clientlog/*
+
+# test
+test/*
