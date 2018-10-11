@@ -25,8 +25,12 @@ clean-image:
 # Build deployment
 .PHONY: mk-deployment clean-deployment mk-deployment-SKC_x86 mk-deployment-SKS_x86 mk-deployment-CONFGEN 
 
-SKC_x86=$(DEPLOYMENT)/sskcp-client-x86# ss kcp client x86
-SKS_x86=$(DEPLOYMENT)/sskcp-server-x86# ss kcp server x86
+# directory of configuration generator
+CONFGEN=$(DEPLOYMENT)/confgenerator
+# directory of ss kcp client x86
+SKC_x86=$(DEPLOYMENT)/sskcp-client-x86
+# directory of ss kcp server x86
+SKS_x86=$(DEPLOYMENT)/sskcp-server-x86
 BUILD_DEPLOY=build_deployment
 
 mk-deployment-SKC_x86: $(SKC_x86)
@@ -34,7 +38,7 @@ mk-deployment-SKC_x86: $(SKC_x86)
 	cp $(SKC_x86)/docker-compose.yml $(BUILD_DEPLOY)
 	cp $(SKC_x86)/temp.env $(BUILD_DEPLOY)
 	cp $(SKC_x86)/Makefile $(BUILD_DEPLOY) 
-	zip -rj sskcp-client-x86-$(VERSION).zip $(BUILD_DEPLOY)
+	zip -r sskcp-client-x86-$(VERSION).zip $(BUILD_DEPLOY)
 	rm -r $(BUILD_DEPLOY)
 
 mk-deployment-SKS_x86: $(SKS_x86)
@@ -42,11 +46,13 @@ mk-deployment-SKS_x86: $(SKS_x86)
 	cp $(SKS_x86)/docker-compose.yml $(BUILD_DEPLOY)
 	cp $(SKS_x86)/temp.env $(BUILD_DEPLOY)
 	cp $(SKS_x86)/Makefile $(BUILD_DEPLOY) 
-	zip -rj sskcp-server-x86-$(VERSION).zip $(BUILD_DEPLOY)
+	zip -r sskcp-server-x86-$(VERSION).zip $(BUILD_DEPLOY)
 	rm -r $(BUILD_DEPLOY)
 
 mk-deployment-CONFGEN: $(DEPLOYMENT)/confgenerator
-	zip -rj sskcp-conf-generator-$(VERSION).zip $(DEPLOYMENT)/confgenerator
+	mkdir $(BUILD_DEPLOY)
+	cp $(CONFGEN)/cli.py $(CONFGEN)/gen.py $(CONFGEN)/gensskcp.py $(CONFGEN)/genss.py $(BUILD_DEPLOY)
+	zip -r sskcp-conf-generator-$(VERSION).zip $(DEPLOYMENT)/confgenerator
 
 #mk-deployment-sskcp-client-armv6: $(DEPLOYMENT)/sskcp-client-armv6
 #	zip -j sskcp-client-armv6-$(VERSION).zip $(DEPLOYMENT)/sskcp-client-armv6
