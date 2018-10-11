@@ -1,5 +1,6 @@
 # client log
 deployment/clientlog/*
 
+*/*.pyc
 # test
 test/*
