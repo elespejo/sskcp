@@ -4,3 +4,6 @@ deployment/clientlog/*
 */*.pyc
 # test
 test/*
+conf
+compose
+log
