@@ -1,7 +1,7 @@
 version: '3.2'
 services: 
-  sskcp-client:
-    image: elespejo/sskcp-x86:${VERSION}
+  SERVICE_NAME:
+    image: ${ORG}/${REPO}-${ARCH}:${VERSION}
 
     restart: always
     network_mode: "host"
@@ -14,4 +14,4 @@ services:
         source: ${LOG_DIR}
         target: /clientlog
       
-    command: supervisord -c /service.conf.d/sskcp-redir-x86.conf
+    command: supervisord -c /service.conf.d/sskcp-redir-${ARCH}.conf
