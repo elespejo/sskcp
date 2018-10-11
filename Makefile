@@ -22,14 +22,36 @@ clean-image:
 	docker rmi $(OWNER)/$(REPO)-$(ARCH)
 
 
-.PHONY: mk-deployment clean-deployment
-mk-deployment-sskcp-client-x86: ${DEPLOYMENT}/sskcp-client-x86
-	zip -j sskcp-client-x86-${VERSION}.zip ${DEPLOYMENT}/sskcp-client-x86
+# Build deployment
+.PHONY: mk-deployment clean-deployment mk-deployment-SKC_x86 mk-deployment-SKS_x86 mk-deployment-CONFGEN 
 
-mk-deployment-sskcp-client-armv6: ${DEPLOYMENT}/sskcp-client-armv6
-	zip -j sskcp-client-armv6-${VERSION}.zip ${DEPLOYMENT}/sskcp-client-armv6
+SKC_x86=$(DEPLOYMENT)/sskcp-client-x86# ss kcp client x86
+SKS_x86=$(DEPLOYMENT)/sskcp-server-x86# ss kcp server x86
+BUILD_DEPLOY=build_deployment
 
-mk-deployment: mk-deployment-sskcp-client-x86 mk-deployment-sskcp-client-armv6
+mk-deployment-SKC_x86: $(SKC_x86)
+	mkdir $(BUILD_DEPLOY)
+	cp $(SKC_x86)/docker-compose.yml $(BUILD_DEPLOY)
+	cp $(SKC_x86)/temp.env $(BUILD_DEPLOY)
+	cp $(SKC_x86)/Makefile $(BUILD_DEPLOY) 
+	zip -rj sskcp-client-x86-$(VERSION).zip $(BUILD_DEPLOY)
+	rm -r $(BUILD_DEPLOY)
+
+mk-deployment-SKS_x86: $(SKS_x86)
+	mkdir $(BUILD_DEPLOY)
+	cp $(SKS_x86)/docker-compose.yml $(BUILD_DEPLOY)
+	cp $(SKS_x86)/temp.env $(BUILD_DEPLOY)
+	cp $(SKS_x86)/Makefile $(BUILD_DEPLOY) 
+	zip -rj sskcp-server-x86-$(VERSION).zip $(BUILD_DEPLOY)
+	rm -r $(BUILD_DEPLOY)
+
+mk-deployment-CONFGEN: $(DEPLOYMENT)/confgenerator
+	zip -rj sskcp-conf-generator-$(VERSION).zip $(DEPLOYMENT)/confgenerator
+
+#mk-deployment-sskcp-client-armv6: $(DEPLOYMENT)/sskcp-client-armv6
+#	zip -j sskcp-client-armv6-$(VERSION).zip $(DEPLOYMENT)/sskcp-client-armv6
+
+mk-deployment: mk-deployment-SKC_x86 mk-deployment-SKS_x86 mk-deployment-CONFGEN
 
 clean-deployment: $(REPO).zip
 	rm $(REPO).zip
