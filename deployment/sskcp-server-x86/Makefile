@@ -33,7 +33,7 @@ status: $(COMP_DIR)/$(NAME).yml
 
 .PHONY: list
 list: $(COMP_DIR)
-	for compose in `ls $(COMP_DIR)`;do echo $$compose;docker-compose -f $(COMP_DIR)/$$compose ps;done
+	for compose in `ls $(COMP_DIR)`;do echo $$compose;docker-compose -p $$compose -f $(COMP_DIR)/$$compose ps;done
 
 .PHONY: remove
 remove: $(COMP_DIR)/$(NAME).yml
