@@ -38,7 +38,7 @@ deploy:
   prelease: true
   skip_cleanup: true
   file_glob: true
-  file: "./*.zip"
+  file: ./*.zip
   on:
     tags: true
     all_branches: true
