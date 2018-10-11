@@ -34,26 +34,24 @@ SKS_x86=$(DEPLOYMENT)/sskcp-server-x86
 BUILD_DEPLOY=build_deployment
 
 mk-deployment-SKC_x86: $(SKC_x86)
-	mkdir $(BUILD_DEPLOY)
-	cp $(SKC_x86)/docker-compose.yml $(BUILD_DEPLOY)
-	cp $(SKC_x86)/temp.env $(BUILD_DEPLOY)
-	cp $(SKC_x86)/Makefile $(BUILD_DEPLOY) 
-	zip -r sskcp-client-x86-$(VERSION).zip $(BUILD_DEPLOY)
-	rm -r $(BUILD_DEPLOY)
+	mkdir sskcp-client-x86
+	cp $(SKC_x86)/docker-compose.yml $(SKC_x86)/temp.env $(SKC_x86)/Makefile sskcp-client-x86
+	sed -i "s/VERSION=develop/VERSION=$(VERSION)/g" sskcp-client-x86/temp.env
+	zip -r sskcp-client-x86-$(VERSION).zip sskcp-client-x86
+	rm -r sskcp-client-x86
 
 mk-deployment-SKS_x86: $(SKS_x86)
-	mkdir $(BUILD_DEPLOY)
-	cp $(SKS_x86)/docker-compose.yml $(BUILD_DEPLOY)
-	cp $(SKS_x86)/temp.env $(BUILD_DEPLOY)
-	cp $(SKS_x86)/Makefile $(BUILD_DEPLOY) 
-	zip -r sskcp-server-x86-$(VERSION).zip $(BUILD_DEPLOY)
-	rm -r $(BUILD_DEPLOY)
+	mkdir sskcp-server-x86
+	cp $(SKS_x86)/docker-compose.yml $(SKS_x86)/temp.env $(SKS_x86)/Makefile sskcp-server-x86 
+	sed -i "s/VERSION=develop/VERSION=$(VERSION)/g" sskcp-server-x86/temp.env
+	zip -r sskcp-server-x86-$(VERSION).zip sskcp-server-x86
+	rm -r sskcp-server-x86
 
 mk-deployment-CONFGEN: $(DEPLOYMENT)/confgenerator
-	mkdir $(BUILD_DEPLOY)
-	cp $(CONFGEN)/cli.py $(CONFGEN)/gen.py $(CONFGEN)/gensskcp.py $(CONFGEN)/genss.py $(BUILD_DEPLOY)
-	zip -r sskcp-conf-generator-$(VERSION).zip $(DEPLOYMENT)/confgenerator
-	rm -r $(BUILD_DEPLOY)
+	mkdir confgenerator
+	cp $(CONFGEN)/cli.py $(CONFGEN)/gen.py $(CONFGEN)/gensskcp.py $(CONFGEN)/genss.py confgenerator
+	zip -r sskcp-conf-generator-$(VERSION).zip confgenerator
+	rm -r confgenerator
 
 #mk-deployment-sskcp-client-armv6: $(DEPLOYMENT)/sskcp-client-armv6
 #	zip -j sskcp-client-armv6-$(VERSION).zip $(DEPLOYMENT)/sskcp-client-armv6
