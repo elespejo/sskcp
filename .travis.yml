@@ -23,7 +23,7 @@ install: true
 
 script: 
   - make mk-image ARCH=$ARCH
-  - make mk-deployment
+  - make mk-deployment VERSION=$TRAVIS_TAG
 
 deploy:
   - provider: script
@@ -41,7 +41,8 @@ deploy:
   - provider: release
     prelease: true
     skip_cleanup: true
-    file: ${REPO}.zip
+    file_glob: true
+    file: ./*.zip
     on:
       tags: true
       all_branches: true
