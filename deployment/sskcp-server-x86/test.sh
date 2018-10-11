@@ -2,7 +2,7 @@
 config() {
   for i in {3..6}
   do
-    make config CONF=${HOME}/elespejo/sskcp/deployment/conf/40${i}0/client LOG=${HOME}/elespejo/sskcp/deployment/log/40${i}0 NAME=40${i}0
+    make config CONF=${HOME}/elespejo/sskcp/deployment/conf/40${i}0/server LOG=${HOME}/elespejo/sskcp/deployment/log/40${i}0 NAME=40${i}0
   done
 }
 

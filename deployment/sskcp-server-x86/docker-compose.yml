@@ -1,17 +1,16 @@
 version: '3.2'
 services: 
-  sskcp-client:
-    image: elespejo/sskcp-${ARCH}:${IMG_VERSION}
+  sskcp-server:
+    image: ${ORG}/${REPO}-${ARCH}:${VERSION}
 
     restart: always
     network_mode: "host"
 
     volumes: 
       - type: bind
-        source: ${PWD}/${C_CONF}
-        target: /clientconf
+        source: ${CONF_DIR}
+        target: /serverconf
       - type: bind
-        source: ${PWD}/${LOG_VOL}
-        target: /clientlog
-      
-    command: supervisord -c /service.conf.d/sskcp-redir-${ARCH}.conf
+        source: ${LOG_DIR}
+        target: /serverlog
+    command: supervisord -c /service.conf.d/sskcp-server-${ARCH}.conf
