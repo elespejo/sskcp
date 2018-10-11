@@ -4,6 +4,7 @@ deployment/clientlog/*
 */*.pyc
 # test
 test/*
+test.sh
 conf
 compose
 log
