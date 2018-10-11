@@ -53,6 +53,7 @@ mk-deployment-CONFGEN: $(DEPLOYMENT)/confgenerator
 	mkdir $(BUILD_DEPLOY)
 	cp $(CONFGEN)/cli.py $(CONFGEN)/gen.py $(CONFGEN)/gensskcp.py $(CONFGEN)/genss.py $(BUILD_DEPLOY)
 	zip -r sskcp-conf-generator-$(VERSION).zip $(DEPLOYMENT)/confgenerator
+	rm -r $(BUILD_DEPLOY)
 
 #mk-deployment-sskcp-client-armv6: $(DEPLOYMENT)/sskcp-client-armv6
 #	zip -j sskcp-client-armv6-$(VERSION).zip $(DEPLOYMENT)/sskcp-client-armv6
