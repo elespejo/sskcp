@@ -22,23 +22,23 @@ script:
 - make mk-image ARCH=$ARCH
 - make mk-deployment VERSION=$TRAVIS_TAG
 deploy:
-- provider: script
-  script: make pushtohub DOCKER_USER=$DOCKER_USER DOCKER_PASS=$DOCKER_PASS ARCH=$ARCH TAG=$TRAVIS_BRANCH
-  on:
-    all_branches: true
-    condition: "$TRAVIS_BRANCH =~ ^master|develop$"
-- provider: script
-  script: make pushtohub DOCKER_USER=$DOCKER_USER DOCKER_PASS=$DOCKER_PASS ARCH=$ARCH TAG=$TRAVIS_TAG
-  on:
-    tags: true
-    all_branches: true
-- provider: releases
-  user: $GITHUB_USER
-  password: $GITHUB_PASS
-  prelease: true
-  skip_cleanup: true
-  file_glob: true
-  file: ./*.zip
-  on:
-    tags: true
-    all_branches: true
+  - provider: releases
+    prerelease: true
+    skip_cleanup: true
+    api_key:
+      secure: oEIJ63+PjEDXQI8Z6FT38X34stqbXbmu4YMe1p9H7XGdIjdl1p5B866dCgx/ctA4FRNobWuJQ58C+JoehbYItO+wsnjOc2mHORuxeaDjhQ4UAW1cU+dAQWe1noEw1rBbVUJwpR0lZGaQlVx8f2v8SQk0kvXAuxBncpJ1SUHEOlVnnd4/rFo+Du6UBQSCYGWwbbDPGhpnEvQs5TSqS27SDNfOcb2HkKo8oRLue3PK/fS0pBWksUIYAmHjAaLhrY2IBTBLOrgwJPXxXVKIOQpTb4pz8tv8jkPK8Y/uXsL8mMsWZNy0GL8T35MI4jU3noPePQsMxmYRuSDeOIvzyPAKpntNvfbaCf7XOTtEMihqvkRlYt4WmawgHJxGWAzJo+6uGFLhq3E4Ic0Op2ATBjUf5ttb8iMNk1ShXKhQId2rzjnG6JSqjvdYnOnO4teXyH4xJDAFGQ+0e7oIsZbw285pnnNRrGo0T8IVzHOnWMrzq8iGFY8XaVnK/V9sFNQ3EdRsV9RU8gSW19vdWSRTm7fsxFLwLXrWDcrKWk+NhMQoKE1lrtWy8rWUug3Re0lAX/MyrQyxUIZQN3lc97GEpqdb4N2ohjZYquPYxmnH2N0WY0o6TQD/HiqTVht71jGYjQEd4rptffcZOW/9IhUg2b9iWcHZXSeAUeao2H6Toxlcvz0=
+    file_glob: true
+    file: "./*.zip"
+    on:
+      tags: true
+      repo: elespejo/sskcp
+  - provider: script
+    script: make pushtohub DOCKER_USER=$DOCKER_USER DOCKER_PASS=$DOCKER_PASS ARCH=$ARCH TAG=$TRAVIS_BRANCH
+    on:
+      all_branches: true
+      condition: "$TRAVIS_BRANCH =~ ^master|develop$"
+  - provider: script
+    script: make pushtohub DOCKER_USER=$DOCKER_USER DOCKER_PASS=$DOCKER_PASS ARCH=$ARCH TAG=$TRAVIS_TAG
+    on:
+      tags: true
+      all_branches: true
