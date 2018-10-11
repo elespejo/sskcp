@@ -2,7 +2,7 @@
 config() {
   for i in {3..6}
   do
-    make config CONF=/home/develop/elespejo/sskcp/deployment/conf/40${i}0/client LOG=/home/develop/elespejo/sskcp/deployment/log/40${i}0 NAME=40${i}0
+    make config CONF=~/elespejo/sskcp/deployment/conf/40${i}0/client LOG=~/elespejo/sskcp/deployment/log/40${i}0 NAME=40${i}0
   done
 }
 
@@ -13,8 +13,6 @@ start() {
   done
 }
 
-#config
-#start
 
 stop() {
   for i in {3..6}
@@ -23,5 +21,30 @@ stop() {
   done
 }
 
+status() {
+  for i in {3..6}
+  do
+    make status NAME=40${i}0
+  done
+}
 
-stop
+case "$1" in 
+  config)
+    config
+    ;;
+
+  start)
+    start
+    ;;
+  
+  stop)
+    stop
+    ;;
+
+  status)
+    status
+    ;;
+
+  *)
+    echo error
+esac
