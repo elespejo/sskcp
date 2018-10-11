@@ -1,7 +1,0 @@
-{
-	"listen": "0.0.0.0:4000",
-	"target": "127.0.0.1:8388",
-	"key": "testkcp",
-	"mode": "fast2",
-	"snmplog": "/serverlog/kcp-20060102.log"
-}
