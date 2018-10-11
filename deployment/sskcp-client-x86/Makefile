@@ -1,14 +1,13 @@
 
 COMP_DIR=$(CURDIR)/compose
 ENV=$(CURDIR)/.env
-shell=
 
 .PHONY: config
 config:
 	echo "CONF_DIR=$(CONF)" > $(ENV)
 	echo "LOG_DIR=$(LOG)" >> $(ENV)
 	mkdir -p $(COMP_DIR)
-	docker-compose -f $(CURDIR)/docker-compose.yml config | tee $(NAME).yml
+	docker-compose -f $(CURDIR)/docker-compose.yml config | tee $(COMP_DIR)/$(NAME).yml
 	rm $(ENV)
 	mkdir -p $(LOG)
 
@@ -31,7 +30,7 @@ status: $(COMP_DIR)/$(NAME).yml
 
 .PHONY: list
 list: $(COMP_DIR)
-	for compose in `ls $(COMP_DIR)`;do docker-compose -f $(COMP_DIR)/$(NAME).yml ps;done
+	for compose in `ls $(COMP_DIR)`;do echo $$compose;docker-compose -f $(COMP_DIR)/$$compose ps;done
 
 .PHONY: remove
 remove: $(COMP_DIR)/$(NAME).yml
