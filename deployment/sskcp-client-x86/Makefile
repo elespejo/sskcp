@@ -1,13 +1,17 @@
 
 COMP_DIR=$(CURDIR)/compose
+ENV_TEMP=$(CURDIR)/temp.env
 ENV=$(CURDIR)/.env
 
 .PHONY: config
 config:
-	echo "CONF_DIR=$(CONF)" > $(ENV)
+	cp $(ENV_TEMP) $(ENV)
+	echo "CONF_DIR=$(CONF)" >> $(ENV)
 	echo "LOG_DIR=$(LOG)" >> $(ENV)
+	cat $(ENV)
 	mkdir -p $(COMP_DIR)
 	docker-compose -f $(CURDIR)/docker-compose.yml config | tee $(COMP_DIR)/$(NAME).yml
+	sed -i "s/SERVICE_NAME/sskcp-client-x86-$(NAME)/g" $(COMP_DIR)/$(NAME).yml
 	rm $(ENV)
 	mkdir -p $(LOG)
 
