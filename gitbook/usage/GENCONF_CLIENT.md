@@ -8,19 +8,19 @@ You can download the generator package from web page or command line.
 
 * From command line:  
     ```bash
-    $ wget https://github.com/elespejo/sskcp/releases/download/[VERSION]/sskcp-conf-generator-[VERSION].zip
+    wget https://github.com/elespejo/sskcp/releases/download/[VERSION]/sskcp-conf-generator-[VERSION].zip
     ```
 
 ### Unzip
 ```bash
-$ unzip sskcp-conf-generator-[VERSION].zip
+unzip sskcp-conf-generator-[VERSION].zip
 ```
 
 ### Generate configuration
 
 ```bash
-$ cd confgenerator
-$ python cli.py client --ssport [SS_PORT] --vpsip [VPS_IP] --kcpport [KCP_PORT] --key [KEY]
+cd confgenerator
+python cli.py client --ssport [SS_PORT] --vpsip [VPS_IP] --kcpport [KCP_PORT] --key [KEY]
 ```
 in which,
 * [SS_PORT]: shadowsocks listened port 
@@ -30,7 +30,7 @@ in which,
 
 e.g, generate sskcp configuration
 ```bash
-$ python cli.py client --ssport 2010 --vpsip 123.45.67.8 --kcpport 7010 --key music
+python cli.py client --ssport 2010 --vpsip 123.45.67.8 --kcpport 7010 --key music
 ``` 
 
 You can validate the result by `tree ../conf`, with successful output similar with the following,

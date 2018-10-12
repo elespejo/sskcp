@@ -9,7 +9,7 @@ Go to the [release page](https://github.com/elespejo/sskcp/releases) of this pro
 
 * From command line:  
   ```bash
-  $ wget https://github.com/elespejo/sskcp/releases/download/[VERSION]/[STRUCTURE]-server-[ARCH]-[VERSION].zip
+  wget https://github.com/elespejo/sskcp/releases/download/[VERSION]/[STRUCTURE]-server-[ARCH]-[VERSION].zip
   ```
   * VERSION : the release tag  
   * STRUCTURE : the structure of ss and kcp  
@@ -17,14 +17,14 @@ Go to the [release page](https://github.com/elespejo/sskcp/releases) of this pro
 
   e.g : Deploy a sskcp server on a x86 machine with the release 0.3.7 by executing
   ```bash
-  $ wget https://github.com/elespejo/sskcp/releases/download/0.3.7/sskcp-server-x86-0.3.7.zip
+  wget https://github.com/elespejo/sskcp/releases/download/0.3.7/sskcp-server-x86-0.3.7.zip
   ```
 
 ### Unzip
 
 ```bash
-$ unzip [STRUCTURE]-server-[ARCH]-[VERSION].zip
-$ cd [STRUCTURE]-server-[ARCH]
+unzip [STRUCTURE]-server-[ARCH]-[VERSION].zip
+cd [STRUCTURE]-server-[ARCH]
 ```
 
 ### Generate the docker compose file
@@ -35,13 +35,13 @@ Docker compose file is used for sskcp deployment. Its generation requires three 
 * [COMP_NAME] : The name of this compose file. This name is used to control the service. Must be **uniqueness**.
 
 ```bash
-$ make config CONF=[CONF_PATH] LOG=[LOG_PATH] NAME=[COMP_NAME]
+make config CONF=[CONF_PATH] LOG=[LOG_PATH] NAME=[COMP_NAME]
 ```
 
 e.g : Generate a compose file named `7010.yml` with the configuration in `~/conf/7010/` and log generated into `~/log/7010/`.
 ```bash
-$ cd ~/sskcp-server-x86/
-$ make config CONF=~/conf/7010 LOG=~/log/7010 NAME=7010
+cd ~/sskcp-server-x86/
+make config CONF=~/conf/7010 LOG=~/log/7010 NAME=7010
 ```
 Therefore a compose file named `7010.yml` is generated in `~/sskcp-server-x86/compose/`.
 ```yaml
@@ -67,12 +67,12 @@ version: '3.2'
 ### Start the service
 Start the service with the name you specified in the config step above.
 ```bash 
-$ make start NAME=[COMP_NAME]
+make start NAME=[COMP_NAME]
 ```
 e.g: start service `7010`
 ```bash
-$ cd sskcp-server-x86/
-$ make start NAME=7010
+cd sskcp-server-x86/
+make start NAME=7010
 ```
 After starting the service successfully, you may see the output similar with the following: 
 ```
@@ -82,25 +82,25 @@ Creating 7010_sskcp-server_1 ... done
 
 ### Restart the service
 ```bash
-$ make restart NAME=[COMP_NAME]
+make restart NAME=[COMP_NAME]
 ```
 
 ### Check status of the service
 ```bash
-$ make status NAME=[COMP_NAME]
+make status NAME=[COMP_NAME]
 ```
 
 ### Stop the service
 ```bash
-$ make stop NAME=[COMP_NAME]
+make stop NAME=[COMP_NAME]
 ```
 
 ### List the services
 ```bash
-$ make list
+make list
 ```
 
 ### Remove the compose file
 ```bash
-$ make remove NAME=[COMP_NAME]
+make remove NAME=[COMP_NAME]
 ```
