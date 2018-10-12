@@ -1,76 +1,27 @@
 <p align="center">
-  <img src="https://www.lucidchart.com/publicSegments/view/acf1287b-07f1-4ac9-8efe-a82eec2a9e73/image.png">
+  <img src="https://www.lucidchart.com/publicSegments/view/69e4b086-a40a-4640-9162-18800abe6b15/image.png">
 </p>
 
 <h1 align="center"> sskcp </h1>
 <p align="center">
-  <b >x86 and armv6 image of ss and kcp</b>
+  <b >image and deployment of ss and kcp for x86 and armv6</b>
 </p>
 <br>
 
+github : 
 [![GitHub release](https://img.shields.io/github/release/elespejo/sskcp.svg)](https://github.com/elespejo/sskcp/releases)
-![GitHub](https://img.shields.io/github/license/elespejo/sskcp.svg)  
-Travis :  
+![GitHub](https://img.shields.io/github/license/elespejo/sskcp.svg)
+[![Github Releases](https://img.shields.io/github/downloads/elespejo/sskcp/latest/total.svg)](https://github.com/elespejo/sskcp/releases/latest)
+
+Travis : 
 ![Travis (.org) branch](https://img.shields.io/travis/elespejo/sskcp/master.svg)  
+
 Docker :  
-[![Docker Build Status](https://img.shields.io/docker/build/elespejo/sskcp-x86.svg)](https://hub.docker.com/r/elespejo/sskcp-x86/builds/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/elespejo/sskcp-x86.svg)](https://hub.docker.com/r/elespejo/sskcp-x86/tags/)
+x86: [![x86 Pulls](https://img.shields.io/docker/pulls/elespejo/sskcp-x86.svg)](https://hub.docker.com/r/elespejo/sskcp-x86/tags/)  
+armv6: [![Armv6 Pulls](https://img.shields.io/docker/pulls/elespejo/sskcp-armv6.svg)](https://hub.docker.com/r/elespejo/sskcp-armv6/tags/)
 
-# Dependence
-
-1. Install docker 18.06 : [reference](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-
-2. Install `docker-compose` command :  
-For x86 : docker-compose 1.22.0 [reference](https://docs.docker.com/compose/install/)  
-For armv6 : `pip install docker-compose`
-
-# Deployment
-
-  - Pull the code from github.
-    ```bash
-    $ git clone https://github.com/elespejo/sskcp.git
-    $ cd sskcp/test
-    ```
-
-  - Start sskcp client or server.  
-    Client:
-    ```bash
-    $ docker-compose -f docker-compose-client.yml up -d
-    ```
-    Server:
-    ```bash
-    $ ./server-ctl start
-    ```
-
-  - Check status of sskcp client or server.  
-    Client:
-    ```bash
-    $ ./check_status.sh 
-    ```
-    Server:
-    ```bash
-    $ ./server-ctl status
-    ```
-
-  - Stop the sskcp client or server.  
-    Client:
-    ```bash
-    $ docker-compose -f docker-compose-client.yml down
-    ```
-    Server:
-    ```bash
-    $ ./server-ctl stop
-    ```
-
-### Build
-
-  ```bash
-  $ make build
-  ```
-
-### Built With
-  - travis
-
+# Description
+  This project contains the images and deployments of ss and kcp for x86 and armv6. More details of the project see the github page of this project.
 
 # Logistics
 
