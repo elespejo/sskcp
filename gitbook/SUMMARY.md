@@ -2,11 +2,17 @@
 
 * [Introduction](README.md)
 
-### sskcp
-* [Topology](project/TOPOLOGY.md)
-* [Dependency](project/DEPENDENCE.md)
-* [Generate configuration](project/GEN_CONF.md)
-* [Deployment](project/DEPLOYMENT.md)
+### Overview 
+* [Topology](usage/TOPOLOGY.md)
+* [Dependency](usage/DEPENDENCY.md)
+
+### Deploy client
+* [Generate configuration](usage/GENCONF_CLIENT.md)
+* [Deployment](usage/DEPLOY_CLIENT.md)
+
+### Deploy server 
+* [Generate configuration](usage/GENCONF_SERVER.md)
+* [Deployment](usage/DEPLOY_SERVER.md)
 
 
 ### Community

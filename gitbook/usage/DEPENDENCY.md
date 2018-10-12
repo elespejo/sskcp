@@ -1,4 +1,4 @@
-# Dependence
+# Dependency
 
 1. Install [docker 18.06](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
