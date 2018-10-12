@@ -1,7 +1,7 @@
 # client log
 deployment/clientlog/*
 
-*/*.pyc
+*/**/*.pyc
 # test
 test/*
 test.sh

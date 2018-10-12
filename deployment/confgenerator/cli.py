@@ -1,23 +1,29 @@
-import gen, gensskcp, genss
+import gensskcp
 import argparse
 
 def cli():
     parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('--ssport', dest="ssport", type=int, help='ss port')
-    parser.add_argument('--kcpport', dest='kcpport', type=int, help='kcp port')
-    parser.add_argument('--dest', dest="dest", help='dest')
-    parser.add_argument('--vpsip', dest='vpsip', help='vps ip')
+    subparsers = parser.add_subparsers(title='subcommands', description='valid subcommands', help='additional help -h', dest='subcmd')
+    client_parser = subparsers.add_parser('client')
+    client_parser.add_argument('--ssport', dest="ssport", type=int, help='ss port')
+    client_parser.add_argument('--vpsip', dest='vpsip', help='vps ip')
+    client_parser.add_argument('--kcpport', dest='kcpport', type=int, help='kcp port')
+    client_parser.add_argument('--key', dest='key', help='key for password')
+    client_parser.add_argument('--dest', dest="dest", help='dest', default="")
+    server_parser = subparsers.add_parser('server')
+    server_parser.add_argument('--kcpport', dest='kcpport', type=int, help='kcp port')
+    server_parser.add_argument('--key', dest='key', help='key for password')
+    server_parser.add_argument('--dest', dest="dest", help='dest', default="")
+
     return parser
 
 if __name__ == "__main__":
     args = vars(cli().parse_args())
-    if args["vpsip"] == None:
-        print("Wrong")
-    elif args["kcpport"] == None:
-        ss = genss.SS(args) 
-        runner = gen.Generation().add(ss)
-        runner.generate("../conf")
-    else:
+    if args["subcmd"] == "client":
         sskcp = gensskcp.SSKCP(args)
-        runner = gen.Generation().add(sskcp)
-        runner.generate("../conf")
+        sskcp.write_client("../conf")
+    elif args["subcmd"] == "server":
+        sskcp = gensskcp.SSKCP(args)
+        sskcp.write_server("../conf")
+    else:
+        print("Wrong")
