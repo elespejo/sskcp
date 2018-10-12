@@ -60,8 +60,6 @@ services:
       target: /serverlog
       type: bind
 version: '3.2'
-
-
 ```
 
 ### Start the service
@@ -84,23 +82,81 @@ Creating 7010_sskcp-server_1 ... done
 ```bash
 make restart NAME=[COMP_NAME]
 ```
+e.g
+```bash
+make restart NAME=7010
+```
+After restarting the service successfully, you may see the output similar with the following:
+```
+docker-compose -p 7010 -f ~/sskcp-server-x86/compose/7010.yml up -d --force-recreate
+Recreating 7010_sskcp-server_1 ... done
+```
 
 ### Check status of the service
 ```bash
 make status NAME=[COMP_NAME]
+```
+e.g,
+```bash
+make stop NAME=7010
+```
+You may see the output similar with the following:
+```
+docker-compose -p 7010 -f ~/sskcp-server-x86/compose/7010.yml ps
+       Name                      Command               State   Ports
+--------------------------------------------------------------------
+7010_sskcp-server_1   supervisord -c /service.co ...   Up
+docker-compose -p 7010 -f ~/sskcp-server-x86/compose/7010.yml logs
+Attaching to 7010_sskcp-server_1
+sskcp-server_1  | 2018-10-12 04:02:09,572 CRIT Supervisor is running as root...
+sskcp-server_1  | 2018-10-12 04:02:09,572 CRIT Supervisor is running as root...
+sskcp-server_1  | 2018-10-12 04:02:09,574 INFO supervisord started with pid 1
+sskcp-server_1  | 2018-10-12 04:02:09,574 INFO supervisord started with pid 1
+...
 ```
 
 ### Stop the service
 ```bash
 make stop NAME=[COMP_NAME]
 ```
+e.g,
+```bash
+make stop NAME=7010
+```
+After stoping the service successfully, you may see the output similar with the following:
+```
+docker-compose -p 7010 -f ~/sskcp-server-x86/compose/7010.yml down
+Stopping 7010_sskcp-server_1 ... done
+Removing 7010_sskcp-server_1 ... done
+```
 
 ### List the services
 ```bash
 make list
 ```
+You may see the output similar with the following:
+```
+for compose in `ls ~/sskcp-server-x86/compose`;do name=`echo $compose|awk -F "." '{print $1}'`;echo $name;docker-compose -p $name -f ~/sskcp-server-x86/compose/$compose ps;done
+7010
+       Name                      Command               State   Ports
+--------------------------------------------------------------------
+7010_sskcp-server_1   supervisord -c /service.co ...   Up
+...
+```
 
 ### Remove the compose file
 ```bash
 make remove NAME=[COMP_NAME]
+```
+e.g,
+```bash
+make remove NAME=7010
+```
+You may see the output similar with the following:
+```
+rm ~/sskcp-server-x86/compose/7010.yml
+```
+Check whether the remove step successfully:
+```bash
+ls compose | grep 7010
 ```
