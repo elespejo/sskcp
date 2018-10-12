@@ -2,14 +2,15 @@
 
 * [Introduction](README.md)
 
-### Project
-* [TOPOLOGY](project/TOPOLOGY.md)
-* [Dependence](project/DEPENDENCE.md)
-* [Deployment](project/DEPLOYMENT.md)
+### sskcp
+* [Topology](project/TOPOLOGY.md)
+* [Dependency](project/DEPENDENCE.md)
 * [Generate configuration](project/GEN_CONF.md)
+* [Deployment](project/DEPLOYMENT.md)
 
-### Github
-* [Acknowledgment](github/ACKNOWLEDGMENTS.md)
-* [Code of conduct](github/CODE_OF_CONDUCT.md)
-* [Contributing](github/CONTRIBUTING.md)
-* [Issue_template](github/ISSUE_TEMPLATE.md)
+
+### Community
+* [Acknowledgment](community/ACKNOWLEDGMENTS.md)
+* [Code of conduct](community/CODE_OF_CONDUCT.md)
+* [Contributing](community/CONTRIBUTING.md)
+* [Issue_template](community/ISSUE_TEMPLATE.md)
