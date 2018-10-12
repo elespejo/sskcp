@@ -21,14 +21,14 @@ x86: [![x86 Pulls](https://img.shields.io/docker/pulls/elespejo/sskcp-x86.svg)](
 armv6: [![Armv6 Pulls](https://img.shields.io/docker/pulls/elespejo/sskcp-armv6.svg)](https://hub.docker.com/r/elespejo/sskcp-armv6/tags/)
 
 # Description
-  This project contains the images and deployments of ss and kcp for x86 and armv6. More details of the project see the github page of this project.
+  This project contains the images and deployments of ss and kcp for x86 and armv6. More details of the project see [the github page](https://elespejo.github.io/sskcp/) of this project.
 
 # Logistics
 
 ### Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/elespejo/sskcp/blob/master/docs/CONTRIBUTING.md) for contributing.
-For details on our [code of conduct](https://github.com/elespejo/sskcp/blob/master/docs/CODE_OF_CONDUCT.md), and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/elespejo/sskcp/blob/master/.github/CONTRIBUTING.md) for contributing.
+For details on our [code of conduct](https://github.com/elespejo/sskcp/blob/master/.github/CODE_OF_CONDUCT.md), and the process for submitting pull requests to us.
 
 ### Versioning
 
@@ -42,7 +42,7 @@ See also the list of [contributors](https://github.com/elespejo/sskcp/graphs/con
 
 ### Acknowledgments
 
-See [Acknowledgments](https://github.com/elespejo/sskcp/blob/master/docs/ACKNOWLEDGMENTS.md)
+See [Acknowledgments](https://github.com/elespejo/sskcp/blob/master/.github/ACKNOWLEDGMENTS.md)
 
 
 ### License
