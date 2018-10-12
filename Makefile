@@ -49,7 +49,7 @@ mk-deployment-SKS_x86: $(SKS_x86)
 
 mk-deployment-CONFGEN: $(DEPLOYMENT)/confgenerator
 	mkdir confgenerator
-	cp $(CONFGEN)/cli.py $(CONFGEN)/gen.py $(CONFGEN)/gensskcp.py $(CONFGEN)/genss.py confgenerator
+	cp $(CONFGEN)/* confgenerator
 	zip -r sskcp-conf-generator-$(VERSION).zip confgenerator
 	rm -r confgenerator
 
