@@ -1,16 +1,40 @@
+
+COMP_DIR=$(CURDIR)/compose
+ENV_TEMP=$(CURDIR)/temp.env
+ENV=$(CURDIR)/.env
+
+.PHONY: config
+config:
+	cp $(ENV_TEMP) $(ENV)
+	echo "CONF_DIR=$(CONF)" >> $(ENV)
+	echo "LOG_DIR=$(LOG)" >> $(ENV)
+	cat $(ENV)
+	mkdir -p $(COMP_DIR)
+	docker-compose -p $(NAME) -f $(CURDIR)/docker-compose.yml config | tee $(COMP_DIR)/$(NAME).yml
+	rm $(ENV)
+	mkdir -p $(LOG)
+
 .PHONY: start
-start:
-	docker-compose -f ${CURDIR}/docker-compose.yml up -d 
+start: $(COMP_DIR)/$(NAME).yml
+	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml up -d 
 
 .PHONY: stop
-stop:
-	docker-compose -f ${CURDIR}/docker-compose.yml down
+stop: $(COMP_DIR)/$(NAME).yml
+	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml down
 
 .PHONY: restart
-restart:
-	docker-compose -f ${CURDIR}/docker-compose.yml up -d --force-recreate
+restart: $(COMP_DIR)/$(NAME).yml
+	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml up -d --force-recreate
 
 .PHONY: status
-status:
-	docker-compose -f ${CURDIR}/docker-compose.yml ps
-	docker-compose -f ${CURDIR}/docker-compose.yml logs
+status: $(COMP_DIR)/$(NAME).yml
+	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml ps
+	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml logs
+
+.PHONY: list
+list: $(COMP_DIR)
+	for compose in `ls $(COMP_DIR)`;do name=`echo $$compose|awk -F "." '{print $$1}'`;echo $$name;docker-compose -p $$name -f $(COMP_DIR)/$$compose ps;done
+
+.PHONY: remove
+remove: $(COMP_DIR)/$(NAME).yml
+	rm $(COMP_DIR)/$(NAME).yml
