@@ -38,7 +38,7 @@ mk-deployment-SKC_armv6: $(SKC_armv6)
 	mkdir sskcp-client-armv6
 	cp $(SKC_armv6)/docker-compose.yml $(SKC_armv6)/temp.env $(SKC_armv6)/Makefile sskcp-client-armv6
 	sed -i "s/VERSION=latest/VERSION=$(VERSION)/g" sskcp-client-armv6/temp.env
-	zip -r sskcp-client-armv6-$(VERSION) sskcp-client-armv6
+	zip -r sskcp-client-armv6-$(VERSION).zip sskcp-client-armv6
 	rm -r sskcp-client-armv6
 
 mk-deployment-SKC_x86: $(SKC_x86)
