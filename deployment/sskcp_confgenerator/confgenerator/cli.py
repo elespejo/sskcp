@@ -1,5 +1,6 @@
-import gensskcp
 import argparse
+import confgenerator.gensskcp as gen
+
 
 def cli():
     parser = argparse.ArgumentParser(description='Process some integers.')
@@ -20,10 +21,10 @@ def cli():
 if __name__ == "__main__":
     args = vars(cli().parse_args())
     if args["subcmd"] == "client":
-        sskcp = gensskcp.SSKCP(args)
+        sskcp = gen.SSKCP(args)
         sskcp.write_client("../conf")
     elif args["subcmd"] == "server":
-        sskcp = gensskcp.SSKCP(args)
+        sskcp = gen.SSKCP(args)
         sskcp.write_server("../conf")
     else:
         print("Wrong")
