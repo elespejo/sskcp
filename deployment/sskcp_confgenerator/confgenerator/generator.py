@@ -4,6 +4,7 @@
 import os
 import yaml
 import json
+import shutil
 
 class Conf_Generator():
     """Basic generator."""
@@ -68,8 +69,23 @@ class Conf_Generator():
             LOG_DIR=info['log-dir']
             MODE=info['mode'] 
         """
+        if os.path.exists(dest):
+            print("The configuration exists.")
+            yn = input("Do you want to overwrite it?[y/n]")
+            if yn == 'y':
+                print("Remove origin configuration: "+dest)
+                shutil.rmtree(dest)
+            elif yn == 'n':
+                raise SystemExit("Exit.")
+            else:
+                raise SystemExit("Worry keyword: "+yn+"\nExit.")
+
+        print("\nGenerate configuration structure.")
+        print(" - create directory: "+dest)
         os.makedirs(dest+"/conf", exist_ok=True)
+        print(" - create log directory: "+log)
         os.makedirs(log, exist_ok=True)
+        print(" - create config.env.")
         with open(dest+"/config.env", "w") as f:
             f.write("LOG_DIR="+log+'\nMODE='+mode)
         
@@ -124,6 +140,7 @@ class Conf_Generator():
         Return:
             A json file named [name] with content [conf] in [dest].
         """
+        print("\nGenerate json file: "+dest+'/'+name+".json")
         with open(dest+'/'+name+".json", 'w') as outfile:
             try:
                 json.dump(conf, outfile, indent=4)
@@ -140,6 +157,7 @@ class Conf_Generator():
         Return:
             yaml_dict: the dict of the yaml file. 
         """
+        print("\nLoad yaml file: "+yaml_file)
         with open(yaml_file, 'r') as file:
             try:
                 return yaml.load(file)
