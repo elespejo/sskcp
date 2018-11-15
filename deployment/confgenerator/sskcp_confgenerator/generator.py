@@ -82,7 +82,7 @@ class Conf_Generator():
 
         print("\nGenerate configuration structure.")
         print(" - create directory: "+dest)
-        os.makedirs(dest+"/conf", exist_ok=True)
+        os.makedirs(dest+"/conf")
         print(" - create log directory: "+log)
         os.makedirs(log, exist_ok=True)
         print(" - create config.env.")
