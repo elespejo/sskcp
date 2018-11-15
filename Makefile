@@ -56,10 +56,10 @@ mk-deployment-SKS_x86: $(SKS_x86)
 	rm -r sskcp-server-x86
 
 mk-deployment-CONFGEN: $(DEPLOYMENT)/confgenerator
-	mkdir confgenerator
-	cp $(CONFGEN)/* confgenerator
-	zip -r sskcp-conf-generator-$(VERSION).zip confgenerator
-	rm -r confgenerator
+	mkdir sskcp_confgenerator
+	cp -r $(CONFGEN)/* sskcp_confgenerator
+	zip -r sskcp-conf-generator-$(VERSION).zip sskcp_confgenerator
+	rm -r sskcp_confgenerator
 
 mk-deployment: mk-deployment-CONFGEN mk-deployment-SKC_x86 mk-deployment-SKS_x86 mk-deployment-SKC_armv6
 
