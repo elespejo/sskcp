@@ -8,3 +8,6 @@ test.sh
 conf
 compose
 log
+
+# vscode setting
+.vscode/*
