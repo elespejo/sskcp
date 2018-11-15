@@ -3,8 +3,8 @@
 
 import os
 import argparse
-import confgenerator.generator as GEN
-import confgenerator.validator as VAL
+import sskcp_confgenerator.generator as GEN
+import sskcp_confgenerator.validator as VAL
 
 # traceback setting
 #sys.tracebacklimit = 0
