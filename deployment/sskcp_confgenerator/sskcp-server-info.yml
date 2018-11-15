@@ -1,0 +1,12 @@
+server:
+  - mode: ss
+    log-dir: /sskcplog
+    dest: /sskcpconfig
+    listenport: 7010
+    key: test1
+
+  - mode: sskcp
+    log-dir: /sskcplog
+    dest: /sskcpconfig
+    listenport: 7020
+    key: test2

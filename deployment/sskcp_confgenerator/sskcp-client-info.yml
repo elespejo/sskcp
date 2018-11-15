@@ -1,0 +1,16 @@
+client:
+  - mode: sskcp
+    listenport: 2010
+    vpsip: 1.1.1.1
+    vpsport: 7010
+    key: test1
+    dest: /sskcpconfig
+    log-dir: /sskcplog
+
+  - mode: ss
+    listenport: 2020
+    vpsip: 2.2.2.2
+    vpsport: 7020
+    key: test2
+    dest: /sskcpconfig
+    log-dir: /sskcplog
