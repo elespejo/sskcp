@@ -4,13 +4,11 @@ client:
     vpsip: 1.1.1.1
     vpsport: 7010
     key: test1
-    dest: /home/USER/config
     log-dir: /home/USER/log
 
-  - mode: ss
+  - mode: sskcp
     listenport: 2020
     vpsip: 2.2.2.2
     vpsport: 7020
     key: test2
-    dest: /home/develop_pan/config
-    log-dir: /home/develop_pan/log
+    log-dir: /home/USER/log

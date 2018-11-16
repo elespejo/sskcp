@@ -1,12 +1,10 @@
 server:
-  - mode: ss
+  - mode: sskcp
     log-dir: /home/USERlog
-    dest: /home/USERconfig
     listenport: 7010
     key: test1
 
   - mode: sskcp
     log-dir: /home/USERlog
-    dest: /home/USERconfig
     listenport: 7020
     key: test2
