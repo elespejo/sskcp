@@ -28,7 +28,7 @@ clean-image:
 # directory of configuration generator
 CONFGEN=$(DEPLOYMENT)/confgenerator
 # directory of ss kcp client x86
-SKC_x86=$(DEPLOYMENT)/sskcp-client-x86
+SKC_x86=$(DEPLOYMENT)/sskcp-client-imageAPI-x86
 # directory of ss kcp server x86
 SKS_x86=$(DEPLOYMENT)/sskcp-server-x86
 # directory of ss kcp client armv6
@@ -42,11 +42,11 @@ mk-deployment-SKC_armv6: $(SKC_armv6)
 	rm -r sskcp-client-imageAPI-armv6
 
 mk-deployment-SKC_x86: $(SKC_x86)
-	mkdir sskcp-client-x86
-	cp $(SKC_x86)/docker-compose.yml $(SKC_x86)/temp.env $(SKC_x86)/Makefile sskcp-client-x86
-	sed -i "s/VERSION=develop/VERSION=$(VERSION)/g" sskcp-client-x86/temp.env
-	zip -r sskcp-client-x86-$(VERSION).zip sskcp-client-x86
-	rm -r sskcp-client-x86
+	mkdir sskcp-client-imageAPI-x86
+	cp $(SKC_x86)/docker-compose.yml $(SKC_x86)/temp.env $(SKC_x86)/Makefile sskcp-client-imageAPI-x86
+	sed -i "s/VERSION=develop/VERSION=$(VERSION)/g" sskcp-client-imageAPI-x86/temp.env
+	zip -r sskcp-client-imageAPI-x86-$(VERSION).zip sskcp-client-imageAPI-x86
+	rm -r sskcp-client-imageAPI-x86
 
 mk-deployment-SKS_x86: $(SKS_x86)
 	mkdir sskcp-server-x86
