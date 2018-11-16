@@ -28,7 +28,7 @@ restart: $(COMP_DIR)/$(NAME).yml
 .PHONY: status
 status: $(COMP_DIR)/$(NAME).yml
 	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml ps || true
-	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml logs || true
+	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml logs | tail -n 100 || true
 
 .PHONY: list
 list: $(COMP_DIR)
