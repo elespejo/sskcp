@@ -26,7 +26,7 @@ clean-image:
 .PHONY: mk-deployment clean-deployment mk-deployment-SKC_x86 mk-deployment-SKS_x86 mk-deployment-CONFGEN 
 
 # directory of configuration generator
-CONFGEN=$(DEPLOYMENT)/confgenerator
+CONFGEN=$(DEPLOYMENT)/sskcp-confgenerator
 # directory of ss kcp client x86
 SKC_x86=$(DEPLOYMENT)/sskcp-client-imageAPI-x86
 # directory of ss kcp server x86
@@ -55,7 +55,7 @@ mk-deployment-SKS_x86: $(SKS_x86)
 	zip -r sskcp-server-imageAPI-x86-$(VERSION).zip sskcp-server-imageAPI-x86
 	rm -r sskcp-server-imageAPI-x86
 
-mk-deployment-CONFGEN: $(DEPLOYMENT)/confgenerator
+mk-deployment-CONFGEN: $(CONFGEN)
 	mkdir sskcp-confgenerator
 	cp -r $(CONFGEN)/* sskcp-confgenerator
 	zip -r sskcp-confgenerator-$(VERSION).zip sskcp-confgenerator
