@@ -32,14 +32,14 @@ SKC_x86=$(DEPLOYMENT)/sskcp-client-x86
 # directory of ss kcp server x86
 SKS_x86=$(DEPLOYMENT)/sskcp-server-x86
 # directory of ss kcp client armv6
-SKC_armv6=$(DEPLOYMENT)/sskcp-client-armv6
+SKC_armv6=$(DEPLOYMENT)/sskcp-client-imageAPI-armv6
 
 mk-deployment-SKC_armv6: $(SKC_armv6)
-	mkdir sskcp-client-armv6
-	cp $(SKC_armv6)/docker-compose.yml $(SKC_armv6)/temp.env $(SKC_armv6)/Makefile sskcp-client-armv6
-	sed -i "s/VERSION=latest/VERSION=$(VERSION)/g" sskcp-client-armv6/temp.env
-	zip -r sskcp-client-armv6-$(VERSION).zip sskcp-client-armv6
-	rm -r sskcp-client-armv6
+	mkdir sskcp-client-imageAPI-armv6
+	cp $(SKC_armv6)/docker-compose.yml $(SKC_armv6)/temp.env $(SKC_armv6)/Makefile sskcp-client-imageAPI-armv6
+	sed -i "s/VERSION=latest/VERSION=$(VERSION)/g" sskcp-client-imageAPI-armv6/temp.env
+	zip -r sskcp-client-imageAPI-armv6-$(VERSION).zip sskcp-client-imageAPI-armv6
+	rm -r sskcp-client-imageAPI-armv6
 
 mk-deployment-SKC_x86: $(SKC_x86)
 	mkdir sskcp-client-x86
@@ -56,10 +56,10 @@ mk-deployment-SKS_x86: $(SKS_x86)
 	rm -r sskcp-server-x86
 
 mk-deployment-CONFGEN: $(DEPLOYMENT)/confgenerator
-	mkdir sskcp_confgenerator
-	cp -r $(CONFGEN)/* sskcp_confgenerator
-	zip -r sskcp-confgenerator-$(VERSION).zip sskcp_confgenerator
-	rm -r sskcp_confgenerator
+	mkdir sskcp-confgenerator
+	cp -r $(CONFGEN)/* sskcp-confgenerator
+	zip -r sskcp-confgenerator-$(VERSION).zip sskcp-confgenerator
+	rm -r sskcp-confgenerator
 
 mk-deployment: mk-deployment-CONFGEN mk-deployment-SKC_x86 mk-deployment-SKS_x86 mk-deployment-SKC_armv6
 
