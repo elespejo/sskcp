@@ -203,6 +203,26 @@
     
 
     
+        
+        <li class="header">Other</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../CHANGELOG.html">
+            
+                <a href="../CHANGELOG.html">
+            
+                    
+                    Change log
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
 
     <li class="divider"></li>
 
@@ -246,46 +266,72 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="generate-configuration">Generate configuration</h1>
-<h3 id="download-the-configuration-generator">Download the configuration generator</h3>
+                                <h1 id="generate-client-configuration">Generate client configuration</h1>
+<h3 id="step-1-download-the-configuration-generator">Step 1: Download the configuration generator</h3>
 <p>You can download the generator package from web page or command line.</p>
 <ul>
-<li><p>From web:<br>  Go to the <a href="https://github.com/elespejo/sskcp/releases" target="_blank">release page</a> of this project and download <code>sskcp-conf-generator-[VERSION].zip</code>.</p>
+<li><p>From web:<br>  Go to the <a href="https://github.com/elespejo/sskcp/releases" target="_blank">release page</a> of this project and download <code>sskcp-confgenerator-[VERSION].zip</code>.</p>
 </li>
 <li><p>From command line:  </p>
-<pre><code class="lang-bash">  wget https://github.com/elespejo/sskcp/releases/download/[VERSION]/sskcp-conf-generator-[VERSION].zip
+<pre><code class="lang-bash">wget https://github.com/elespejo/sskcp/releases/download/[VERSION]/sskcp-confgenerator-[VERSION].zip
 </code></pre>
-<p>  e.g, download configuration generator of version 0.3.7</p>
-<pre><code class="lang-bash">  wget https://github.com/elespejo/sskcp/releases/download/0.3.7/sskcp-conf-generator-0.3.7.zip
+<p>e.g, download configuration generator of version 0.4.7</p>
+<pre><code class="lang-bash">wget https://github.com/elespejo/sskcp/releases/download/0.4.7/sskcp-confgenerator-0.4.7.zip
 </code></pre>
 </li>
 </ul>
-<h3 id="unzip">Unzip</h3>
-<pre><code class="lang-bash">unzip sskcp-conf-generator-[VERSION].zip
+<h3 id="step-2-unzip">Step 2: Unzip</h3>
+<pre><code class="lang-bash">unzip sskcp-confgenerator-[VERSION].zip
+<span class="hljs-built_in">cd</span> sskcp-confgenerator/
 </code></pre>
-<p>e.g,</p>
-<pre><code class="lang-bash">unzip sskcp-conf-generator-0.3.7.zip
+<p>e.g:</p>
+<pre><code class="lang-bash">unzip sskcp-confgenerator-0.4.7.zip
+<span class="hljs-built_in">cd</span> sskcp-confgenerator/
 </code></pre>
-<h3 id="generate-configuration">Generate configuration</h3>
-<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> confgenerator
-python cli.py client --ssport [SS_PORT] --vpsip [VPS_IP] --kcpport [KCP_PORT] --key [KEY]
+<h3 id="step-3-modify-the-conf-info">Step 3: Modify the conf-info</h3>
+<p>Here is the template conf-info for sskcp client:</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">client:</span>
+<span class="hljs-attr">  - mode:</span> [ss or sskcp]
+<span class="hljs-attr">    listenport:</span> [port]
+<span class="hljs-attr">    vpsip:</span> [ip]
+<span class="hljs-attr">    vpsport:</span> [port]
+<span class="hljs-attr">    key:</span> [key]
+<span class="hljs-attr">    log-dir:</span> [path]
 </code></pre>
-<p>in which,</p>
+<p>The explanation of needed keywords:</p>
 <ul>
-<li>[SS_PORT]: shadowsocks listened port </li>
-<li>[VPS_IP]: vps ip address  </li>
-<li>[KCP_PORT]: remote kcp port on vps </li>
-<li>[KEY]: seed key for generate ss pass and kcp pass  </li>
+<li>[mode]: The mode of the instance. It can be <code>ss</code> or <code>sskcp</code>.</li>
+<li>[listenport]: The port that the instance listens.</li>
+<li>[vpsip]: The vps ip where the instance sent data. </li>
+<li>[vpsport]: The vps port where the instance sent data.</li>
+<li>[key]: The password for client and server authorize each other.</li>
+<li>[log-dir]: The absolute path where the log directory created. The confgenerator will create a directory named <code>[listenport]-[vpsip]-[vpsport]</code> to store snmp log under this path.</li>
 </ul>
-<p>e.g, generate sskcp configuration</p>
-<pre><code class="lang-bash">python cli.py client --ssport 2010 --vpsip 123.45.67.8 --kcpport 7010 --key music
+<h3 id="step-4-use-confgenerator">Step 4: Use confgenerator</h3>
+<pre><code class="lang-bash">python -m confgenerator.cli client <span class="hljs-_">-f</span> [conf-info] <span class="hljs-_">-d</span> [dest]
 </code></pre>
-<p>You can validate the result by <code>tree ../conf</code>, with successful output similar with the following,</p>
-<pre><code>../conf
-&#x2514;&#x2500;&#x2500; 2010-123.45.67.8-7010
-    &#x251C;&#x2500;&#x2500; kcp.json
-    &#x2514;&#x2500;&#x2500; ss.json
+<p>The explanation of arguments:</p>
+<ul>
+<li>[conf-info]: the absolute path of conf-info file.</li>
+<li>[dest]: the absolute path for configuration generation.</li>
+</ul>
+<h3 id="step-4-validation">Step 4: validation</h3>
+<p>After generation, A configuration directory named <code>[listenport]-[vpsip]-[vpsport]</code> is generated in [dest].</p>
+<pre><code class="lang-bash">tree [dest]/
+[dest]
+&#x2514;&#x2500;&#x2500; [listenport]-[vpsip]-[vpsport]
+    &#x251C;&#x2500;&#x2500; conf
+    &#x2502;   &#x251C;&#x2500;&#x2500; kcp.json <span class="hljs-comment"># if mode is ss, this file is not exists.</span>
+    &#x2502;   &#x2514;&#x2500;&#x2500; ss.json 
+    &#x2514;&#x2500;&#x2500; config.env
 </code></pre>
+<p>Also, A log directory named <code>[listenport]-[vpsip]-[vpsport]</code> is created in [log-dir].</p>
+<pre><code class="lang-bash">tree [<span class="hljs-built_in">log</span>-dir]
+[<span class="hljs-built_in">log</span>-dir]
+&#x2514;&#x2500;&#x2500; [listenport]-[vpsip]-[vpsport]
+</code></pre>
+<p>Log files will consistently generated after instance started.</p>
+
                                 
                                 </section>
                             
@@ -328,7 +374,7 @@ python cli.py client --ssport [SS_PORT] --vpsip [VPS_IP] --kcpport [KCP_PORT] --
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Generate configuration","level":"3.1","depth":1,"next":{"title":"Deployment","level":"3.2","depth":1,"path":"usage/DEPLOY_CLIENT.md","ref":"usage/DEPLOY_CLIENT.md","articles":[]},"previous":{"title":"Dependency","level":"2.2","depth":1,"path":"usage/DEPENDENCY.md","ref":"usage/DEPENDENCY.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/GENCONF_CLIENT.md","mtime":"2018-10-15T09:59:30.802Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-15T09:59:55.320Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Generate configuration","level":"3.1","depth":1,"next":{"title":"Deployment","level":"3.2","depth":1,"path":"usage/DEPLOY_CLIENT.md","ref":"usage/DEPLOY_CLIENT.md","articles":[]},"previous":{"title":"Dependency","level":"2.2","depth":1,"path":"usage/DEPENDENCY.md","ref":"usage/DEPENDENCY.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/GENCONF_CLIENT.md","mtime":"2018-11-20T01:49:55.875Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-20T03:50:55.191Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

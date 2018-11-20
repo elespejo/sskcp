@@ -57,6 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="../CHANGELOG.html" />
+    
     
     <link rel="prev" href="GENCONF_SERVER.html" />
     
@@ -201,6 +203,26 @@
     
 
     
+        
+        <li class="header">Other</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../CHANGELOG.html">
+            
+                <a href="../CHANGELOG.html">
+            
+                    
+                    Change log
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
 
     <li class="divider"></li>
 
@@ -245,124 +267,144 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="deployment">Deployment</h1>
-<h3 id="download-the-deployment-package">Download the deployment package</h3>
+<h3 id="step-1-download-the-deployment-package">Step 1: Download the deployment package</h3>
 <p>You can download the deployment package from web page or command line.</p>
 <ul>
-<li><p>From web:<br>Go to the <a href="https://github.com/elespejo/sskcp/releases" target="_blank">release page</a> of this project. Select the package according to the architecture of your machine and the structure you want to use.</p>
+<li><p>From web:<br>Go to the <a href="https://github.com/elespejo/sskcp/releases" target="_blank">release page</a> of this project. Select the package according to the architecture of your machine and the mode you want to use.</p>
 </li>
 <li><p>From command line:  </p>
-<pre><code class="lang-bash">wget https://github.com/elespejo/sskcp/releases/download/[VERSION]/[STRUCTURE]-server-[ARCH]-[VERSION].zip
+<pre><code class="lang-bash">wget https://github.com/elespejo/sskcp/releases/download/[VERSION]/[MODE]-server-imageAPI-x86-[VERSION].zip
 </code></pre>
 <ul>
-<li>VERSION : the release tag  </li>
-<li>STRUCTURE : the structure of ss and kcp  </li>
-<li>ARCH : the architecture of your machine</li>
+<li>VERSION : the release tag.</li>
+<li>MODE : ss or sskcp.</li>
+<li>ARCH : the architecture of your machine. It can be x86 and armv6.</li>
 </ul>
-<p>e.g : Deploy a sskcp server on a x86 machine with the release 0.3.7 by executing</p>
-<pre><code class="lang-bash">wget https://github.com/elespejo/sskcp/releases/download/0.3.7/sskcp-server-x86-0.3.7.zip
+<p>e.g : Deploy a sskcp server on a x86 machine with the release 0.4.7 by executing</p>
+<pre><code class="lang-bash">wget https://github.com/elespejo/sskcp/releases/download/0.4.7/sskcp-server-imageAPI-x86-0.4.7.zip
 </code></pre>
 </li>
 </ul>
-<h3 id="unzip">Unzip</h3>
-<pre><code class="lang-bash">unzip [STRUCTURE]-server-[ARCH]-[VERSION].zip
-<span class="hljs-built_in">cd</span> [STRUCTURE]-server-[ARCH]
+<h3 id="step-2-unzip">Step 2: Unzip</h3>
+<pre><code class="lang-bash">unzip [MODE]-server-imageAPI-x86-[VERSION].zip
+<span class="hljs-built_in">cd</span> [MODE]-server-imageAPI-x86/
 </code></pre>
-<h3 id="generate-the-docker-compose-file">Generate the docker compose file</h3>
-<p>Docker compose file is used for sskcp deployment. Its generation requires three parameters:</p>
+<h3 id="step-3-prepare-the-configuration">Step 3: Prepare the configuration</h3>
+<p>The configuration for server imageAPI looks like following:</p>
+<pre><code>configuration
+&#x251C;&#x2500;&#x2500; conf
+&#x2502;   &#x251C;&#x2500;&#x2500; kcp.json # if mode is ss, this file is not exists.
+&#x2502;   &#x2514;&#x2500;&#x2500; ss.json 
+&#x2514;&#x2500;&#x2500; config.env
+</code></pre><p>The explanation of each file:</p>
 <ul>
-<li>[CONF_PATH] : The absolute path to configuration directory.  </li>
-<li>[LOG_PATH] : The absolute path for storage generated log. This path will be created if it is not existed.  </li>
-<li>[COMP_NAME] : The name of this compose file. This name is used to control the service. Must be <strong>uniqueness</strong>.</li>
+<li>[ss.json]: the configuration of ss.</li>
+<li>[kcp.json]: the configuration of kcp.</li>
+<li>[config.env]: the environment file which content is the variables for the instance.</li>
 </ul>
-<pre><code class="lang-bash">make config CONF=[CONF_PATH] LOG=[LOG_PATH] NAME=[COMP_NAME]
+<p>The template of environment file looks like following:</p>
+<pre><code class="lang-env">LOG_DIR=[path]
+MODE=[ss or sskcp]
 </code></pre>
-<p>e.g : Generate a compose file named <code>7010.yml</code> with the configuration in <code>~/conf/7010/</code> and log generated into <code>~/log/7010/</code>.</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> ~/sskcp-server-x86/
-make config CONF=~/conf/7010 LOG=~/<span class="hljs-built_in">log</span>/7010 NAME=7010
+<blockquote>
+<p>The configuration can use the <a href="GENCONF_SERVER.html">confgenerator</a> to generate. </p>
+</blockquote>
+<h3 id="step-4-config-a-instance">Step 4: Config a instance</h3>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> [mode]-server-imageAPI-x86/
+make config CONFIG=[configuration path] NAME=[NAME]
 </code></pre>
-<p>Therefore a compose file named <code>7010.yml</code> is generated in <code>~/sskcp-server-x86/compose/</code>.</p>
+<p>The explanation of those arguments:</p>
+<ul>
+<li>[CONFIG] : The absolute path to configuration directory.  </li>
+<li>[NAME] : The instance name. This name is used to control the instance. Must be <strong>uniqueness</strong>.</li>
+</ul>
+<p>e.g : Generate a compose file named <code>7010.yml</code> with the configuration in <code>~/conf/2010-123.45.67.8-7010/</code>.</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> ~/sskcp-server-imageAPI-x86/
+make config CONF=~/conf/2010-123.45.67.8-7010 NAME=7010
+</code></pre>
+<p>Therefore a compose file named <code>7010.yml</code> is generated in <code>~/sskcp-server-imageAPI-x86/compose/</code>.</p>
 <pre><code class="lang-yaml"><span class="hljs-comment"># 7010.yml</span>
 <span class="hljs-attr">services:</span>
 <span class="hljs-attr">  sskcp-server:</span>
 <span class="hljs-attr">    command:</span> supervisord -c /service.conf.d/sskcp-redir-x86.conf
-<span class="hljs-attr">    image:</span> elespejo/sskcp-x86:develop
+<span class="hljs-attr">    image:</span> elespejo/sskcp-x86:<span class="hljs-number">0.4</span><span class="hljs-number">.7</span>
 <span class="hljs-attr">    network_mode:</span> host
 <span class="hljs-attr">    restart:</span> always
 <span class="hljs-attr">    volumes:</span>
-<span class="hljs-attr">    - source:</span> ~/conf/<span class="hljs-number">7010</span>
+<span class="hljs-attr">    - source:</span> ~/conf/<span class="hljs-number">2010</span><span class="hljs-bullet">-123.45</span><span class="hljs-number">.67</span><span class="hljs-number">.8</span><span class="hljs-bullet">-7010</span>
 <span class="hljs-attr">      target:</span> /serverconf
 <span class="hljs-attr">      type:</span> bind
-<span class="hljs-attr">    - source:</span> ~/log/<span class="hljs-number">7010</span>
+<span class="hljs-attr">    - source:</span> ~/log/<span class="hljs-number">2010</span><span class="hljs-bullet">-123.45</span><span class="hljs-number">.67</span><span class="hljs-number">.8</span><span class="hljs-bullet">-7010</span>
 <span class="hljs-attr">      target:</span> /serverlog
 <span class="hljs-attr">      type:</span> bind
 <span class="hljs-attr">version:</span> <span class="hljs-string">&apos;3.2&apos;</span>
 </code></pre>
-<h3 id="start-the-service">Start the service</h3>
-<p>Start the service with the name you specified in the config step above.</p>
-<pre><code class="lang-bash">make start NAME=[COMP_NAME]
+<h3 id="step-5-start-the-instance">Step 5: Start the instance</h3>
+<p>Start the instance with the name you specified in the config step above.</p>
+<pre><code class="lang-bash">make start NAME=[NAME]
 </code></pre>
-<p>e.g: start service <code>7010</code></p>
-<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> sskcp-server-x86/
+<p>e.g: start instance <code>7010</code></p>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> sskcp-server-imageAPI-x86/
 make start NAME=7010
 </code></pre>
-<p>After starting the service successfully, you may see the output similar with the following: </p>
-<pre><code>docker-compose -p 7010 -f ~/sskcp-server-x86/compose/7010.yml up -d
+<p>After starting the instance successfully, you may see the output similar with the following: </p>
+<pre><code>docker-compose -p 7010 -f ~/sskcp-server-imageAPI-x86/compose/7010.yml up -d
 Creating 7010_sskcp-server_1 ... done
-</code></pre><h3 id="restart-the-service">Restart the service</h3>
-<pre><code class="lang-bash">make restart NAME=[COMP_NAME]
+</code></pre><h3 id="step-6-restart-the-instance">Step 6: Restart the instance</h3>
+<pre><code class="lang-bash">make restart NAME=[NAME]
 </code></pre>
 <p>e.g</p>
 <pre><code class="lang-bash">make restart NAME=7010
 </code></pre>
-<p>After restarting the service successfully, you may see the output similar with the following:</p>
-<pre><code>docker-compose -p 7010 -f ~/sskcp-server-x86/compose/7010.yml up -d --force-recreate
+<p>After restarting the instance successfully, you may see the output similar with the following:</p>
+<pre><code>docker-compose -p 7010 -f ~/sskcp-server-imageAPI-x86/compose/7010.yml up -d --force-recreate
 Recreating 7010_sskcp-server_1 ... done
-</code></pre><h3 id="check-status-of-the-service">Check status of the service</h3>
-<pre><code class="lang-bash">make status NAME=[COMP_NAME]
+</code></pre><h3 id="step-7-check-status-of-the-instance">Step 7: Check status of the instance</h3>
+<pre><code class="lang-bash">make status NAME=[NAME]
 </code></pre>
 <p>e.g,</p>
 <pre><code class="lang-bash">make stop NAME=7010
 </code></pre>
 <p>You may see the output similar with the following:</p>
-<pre><code>docker-compose -p 7010 -f ~/sskcp-server-x86/compose/7010.yml ps
+<pre><code>docker-compose -p 7010 -f ~/sskcp-server-imageAPI-x86/compose/7010.yml ps
        Name                      Command               State   Ports
 --------------------------------------------------------------------
 7010_sskcp-server_1   supervisord -c /service.co ...   Up
-docker-compose -p 7010 -f ~/sskcp-server-x86/compose/7010.yml logs
+docker-compose -p 7010 -f ~/sskcp-server-imageAPI-x86/compose/7010.yml logs
 Attaching to 7010_sskcp-server_1
 sskcp-server_1  | 2018-10-12 04:02:09,572 CRIT Supervisor is running as root...
 sskcp-server_1  | 2018-10-12 04:02:09,572 CRIT Supervisor is running as root...
 sskcp-server_1  | 2018-10-12 04:02:09,574 INFO supervisord started with pid 1
 sskcp-server_1  | 2018-10-12 04:02:09,574 INFO supervisord started with pid 1
 ...
-</code></pre><h3 id="stop-the-service">Stop the service</h3>
-<pre><code class="lang-bash">make stop NAME=[COMP_NAME]
+</code></pre><h3 id="step-8-stop-the-instance">Step 8: Stop the instance</h3>
+<pre><code class="lang-bash">make stop NAME=[NAME]
 </code></pre>
 <p>e.g,</p>
 <pre><code class="lang-bash">make stop NAME=7010
 </code></pre>
-<p>After stoping the service successfully, you may see the output similar with the following:</p>
-<pre><code>docker-compose -p 7010 -f ~/sskcp-server-x86/compose/7010.yml down
+<p>After stoping the instance successfully, you may see the output similar with the following:</p>
+<pre><code>docker-compose -p 7010 -f ~/sskcp-server-imageAPI-x86/compose/7010.yml down
 Stopping 7010_sskcp-server_1 ... done
 Removing 7010_sskcp-server_1 ... done
-</code></pre><h3 id="list-the-services">List the services</h3>
+</code></pre><h3 id="step-9-list-the-instances">Step 9: List the instances</h3>
 <pre><code class="lang-bash">make list
 </code></pre>
 <p>You may see the output similar with the following:</p>
-<pre><code>for compose in `ls ~/sskcp-server-x86/compose`;do name=`echo $compose|awk -F &quot;.&quot; &apos;{print $1}&apos;`;echo $name;docker-compose -p $name -f ~/sskcp-server-x86/compose/$compose ps;done
+<pre><code>for compose in `ls ~/sskcp-server-imageAPI-x86/compose`;do name=`echo $compose|awk -F &quot;.&quot; &apos;{print $1}&apos;`;echo $name;docker-compose -p $name -f ~/sskcp-server-imageAPI-x86/compose/$compose ps;done
 7010
        Name                      Command               State   Ports
 --------------------------------------------------------------------
 7010_sskcp-server_1   supervisord -c /service.co ...   Up
 ...
-</code></pre><h3 id="remove-the-compose-file">Remove the compose file</h3>
-<pre><code class="lang-bash">make remove NAME=[COMP_NAME]
+</code></pre><h3 id="step-10-remove-the-compose-file">Step 10: Remove the compose file</h3>
+<pre><code class="lang-bash">make remove NAME=[NAME]
 </code></pre>
 <p>e.g,</p>
 <pre><code class="lang-bash">make remove NAME=7010
 </code></pre>
 <p>You may see the output similar with the following:</p>
-<pre><code>rm ~/sskcp-server-x86/compose/7010.yml
+<pre><code>rm ~/sskcp-server-imageAPI-x86/compose/7010.yml
 </code></pre><p>Check whether the remove step successfully:</p>
 <pre><code class="lang-bash">ls compose | grep 7010
 </code></pre>
@@ -393,10 +435,14 @@ Removing 7010_sskcp-server_1 ... done
 
             
                 
-                <a href="GENCONF_SERVER.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Generate configuration">
+                <a href="GENCONF_SERVER.html" class="navigation navigation-prev " aria-label="Previous page: Generate configuration">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="../CHANGELOG.html" class="navigation navigation-next " aria-label="Next page: Change log">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -405,7 +451,7 @@ Removing 7010_sskcp-server_1 ... done
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Deployment","level":"4.2","depth":1,"previous":{"title":"Generate configuration","level":"4.1","depth":1,"path":"usage/GENCONF_SERVER.md","ref":"usage/GENCONF_SERVER.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/DEPLOY_SERVER.md","mtime":"2018-10-12T09:50:05.369Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-15T09:59:55.320Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Deployment","level":"4.2","depth":1,"next":{"title":"Change log","level":"5.1","depth":1,"path":"CHANGELOG.md","ref":"CHANGELOG.md","articles":[]},"previous":{"title":"Generate configuration","level":"4.1","depth":1,"path":"usage/GENCONF_SERVER.md","ref":"usage/GENCONF_SERVER.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/DEPLOY_SERVER.md","mtime":"2018-11-20T03:09:34.997Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-20T03:50:55.191Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>Change log · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="usage/TOPOLOGY.html" />
     
+    <link rel="prev" href="usage/DEPLOY_SERVER.html" />
     
 
     </head>
@@ -87,7 +87,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -206,7 +206,7 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="CHANGELOG.html">
+        <li class="chapter active" data-level="5.1" data-path="CHANGELOG.html">
             
                 <a href="CHANGELOG.html">
             
@@ -249,7 +249,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Change log</a>
     </h1>
 </div>
 
@@ -264,7 +264,52 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p><a href="https://github.com/elespejo/sskcp" target="_blank">back to github</a></p>
+                                <h1 id="047-update">0.4.7: update</h1>
+<h3 id="update-gitbook">Update gitbook:</h3>
+<ol>
+<li>update dependency:
+ 1) add python and pyyaml</li>
+<li>update deployment:
+ 1) add step on title
+ 2) replace &apos;service&apos; to &apos;instance&apos;
+ 3) replace &apos;structure&apos; to &apos;mode&apos;
+ 4) add imageAPI to directory and package
+ 5) add configuration explanation</li>
+<li>update confgen:
+ 1) replace &apos;conf-generator&apos; to &apos;confgenerator&apos;
+ 2) add new confgenerator usage
+ 3) add validation
+ 4) add &apos;step&apos; on title</li>
+<li>update summary:
+ 1) add changelog document</li>
+<li>add changelog</li>
+</ol>
+<h3 id="update-imageapi">Update imageAPI:</h3>
+<ol>
+<li>only show the last 100 line of log when checking status</li>
+<li>new config structure</li>
+<li>stay true when checking status</li>
+</ol>
+<h3 id="update-makefile">Update makefile:</h3>
+<ol>
+<li>rename sskcp-server-x86 to sskcp-server-imageAPI-x86</li>
+<li>rename sskcp-client-x86 to sskcp-client-imageAPI-x86</li>
+<li>rename sskcp-client-armv6 to sskcp-client-imageAPI-armv6</li>
+<li>rename confgenerator zip package name to sskcp-confgenerator-[version].zip</li>
+</ol>
+<h3 id="update-confgenerator">update confgenerator</h3>
+<ol>
+<li>cover the situation : if configuration exist</li>
+<li>add some hint when script run</li>
+<li>remove key &apos;dest&apos; in conf-info</li>
+<li>fix typo of template log path</li>
+<li>update all mode to &apos;sskcp&apos;</li>
+<li>rename directory confgenerator to sskcp-confgenerator</li>
+</ol>
+<h3 id="update-gitignore">update .gitignore:</h3>
+<ol>
+<li>ignore vscode setting</li>
+</ol>
 
                                 
                                 </section>
@@ -292,10 +337,10 @@
 
             
                 
-                
-                <a href="usage/TOPOLOGY.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Topology">
-                    <i class="fa fa-angle-right"></i>
+                <a href="usage/DEPLOY_SERVER.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Deployment">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -304,7 +349,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Topology","level":"2.1","depth":1,"path":"usage/TOPOLOGY.md","ref":"usage/TOPOLOGY.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2018-10-15T10:09:07.794Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-20T03:50:55.191Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Change log","level":"5.1","depth":1,"previous":{"title":"Deployment","level":"4.2","depth":1,"path":"usage/DEPLOY_SERVER.md","ref":"usage/DEPLOY_SERVER.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"CHANGELOG.md","mtime":"2018-11-20T03:50:23.190Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-20T03:50:55.191Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
