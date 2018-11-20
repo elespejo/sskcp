@@ -13,3 +13,6 @@
 ### Deploy server 
 * [Generate configuration](usage/GENCONF_SERVER.md)
 * [Deployment](usage/DEPLOY_SERVER.md)
+
+### Other
+* [Change log](CHANGELOG.md)

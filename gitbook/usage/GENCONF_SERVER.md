@@ -1,48 +1,72 @@
-# Generate configuration
+# Generate server configuration
 
-### Download the configuration generator
+### Step 1: Download the configuration generator
 You can download the generator package from web page or command line.
 
 * From web:  
-    Go to the [release page](https://github.com/elespejo/sskcp/releases) of this project and download `sskcp-conf-generator-[VERSION].zip`.
+    Go to the [release page](https://github.com/elespejo/sskcp/releases) of this project and download `sskcp-confgenerator-[VERSION].zip`.
 
 * From command line:  
-    ```bash
-    wget https://github.com/elespejo/sskcp/releases/download/[VERSION]/sskcp-conf-generator-[VERSION].zip
-    ```
-    e.g, download configuration generator of version 0.3.7
-    ```bash
-    wget https://github.com/elespejo/sskcp/releases/download/0.3.7/sskcp-conf-generator-0.3.7.zip
-    ```
-
-### Unzip
 ```bash
-unzip sskcp-conf-generator-[VERSION].zip
+wget https://github.com/elespejo/sskcp/releases/download/[VERSION]/sskcp-confgenerator-[VERSION].zip
 ```
-e.g,
+e.g, download configuration generator of version 0.4.7
 ```bash
-unzip sskcp-conf-generator-0.3.7.zip
+wget https://github.com/elespejo/sskcp/releases/download/0.4.7/sskcp-confgenerator-0.4.7.zip
 ```
 
-### Generate configuration
-
+### Step 2: Unzip
 ```bash
-cd confgenerator
-python cli.py server --kcpport [KCP_PORT] --key [KEY]
+unzip sskcp-confgenerator-[VERSION].zip
+cd sskcp-confgenerator/
 ```
-in which,
-* [KCP_PORT]: kcp listened port on vps 
-* [KEY]: seed key for generate ss pass and kcp pass  
-
-e.g, generate sskcp configuration
+e.g:
 ```bash
-python cli.py server --kcpport 7010 --key music
+unzip sskcp-confgenerator-0.4.7.zip
+cd sskcp-confgenerator/
+```
+
+### Step 3: Modify the conf-info
+
+Here is the template conf-info for sskcp server:
+```yaml
+server:
+  - mode: [ss or sskcp]
+    listenport: [port]
+    key: [key]
+    log-dir: [path]
+```
+The explanation of needed keywords:
+* [mode]: The mode of the instance. It can be `ss` or `sskcp`.
+* [listenport]: The port that the instance listens.
+* [key]: The password for client and server authorize each other.
+* [log-dir]: The absolute path where the log directory created. The confgenerator will create a directory named `[listenport]` to store snmp log under this path.
+
+### Step 4: Use confgenerator
+
+```bash
+python -m confgenerator.cli server -f [conf-info] -d [dest]
+```
+The explanation of arguments:
+* [conf-info]: the absolute path of conf-info file.
+* [dest]: the absolute path for configuration generation.
+
+### Step 4: validation
+
+After generation, A configuration directory named `[listenport]` is generated in [dest].
+```bash
+tree [dest]/
+[dest]
+└── [listenport]
+    ├── conf
+    │   ├── kcp.json # if mode is ss, this file is not exists.
+    │   └── ss.json 
+    └── config.env
+```
+Also, A log directory named `[listenport]` is created in [log-dir].
+```bash
+tree [log-dir]
+[log-dir]
+└── [listenport]
 ``` 
-
-You can validate the result by `tree ../conf`, with successful output similar with the following,
-```
-../conf
-└── 7010
-    ├── kcp.json
-    └── ss.json
-```
+Log files will consistently generated after instance started.
