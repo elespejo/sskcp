@@ -10,9 +10,9 @@ You can download the generator package from web page or command line.
 ```bash
 wget https://github.com/elespejo/sskcp/releases/download/[VERSION]/sskcp-confgenerator-[VERSION].zip
 ```
-e.g, download configuration generator of version 0.4.7
+e.g, download configuration generator of version 0.4.8
 ```bash
-wget https://github.com/elespejo/sskcp/releases/download/0.4.7/sskcp-confgenerator-0.4.7.zip
+wget https://github.com/elespejo/sskcp/releases/download/0.4.8/sskcp-confgenerator-0.4.8.zip
 ```
 
 ### Step 2: Unzip
@@ -22,7 +22,7 @@ cd sskcp-confgenerator/
 ```
 e.g:
 ```bash
-unzip sskcp-confgenerator-0.4.7.zip
+unzip sskcp-confgenerator-0.4.8.zip
 cd sskcp-confgenerator/
 ```
 

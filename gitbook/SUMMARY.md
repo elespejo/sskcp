@@ -14,5 +14,8 @@
 * [Generate configuration](usage/GENCONF_SERVER.md)
 * [Deployment](usage/DEPLOY_SERVER.md)
 
+### For developer
+* [develop flow](develop/WORKFLOW.md)
+
 ### Other
 * [Change log](CHANGELOG.md)

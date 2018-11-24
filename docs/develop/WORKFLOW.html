@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Dependency · GitBook</title>
+        <title>develop flow · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="GENCONF_CLIENT.html" />
+    <link rel="next" href="../CHANGELOG.html" />
     
     
-    <link rel="prev" href="TOPOLOGY.html" />
+    <link rel="prev" href="../usage/DEPLOY_SERVER.html" />
     
 
     </head>
@@ -109,9 +109,9 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="TOPOLOGY.html">
+        <li class="chapter " data-level="2.1" data-path="../usage/TOPOLOGY.html">
             
-                <a href="TOPOLOGY.html">
+                <a href="../usage/TOPOLOGY.html">
             
                     
                     Topology
@@ -122,9 +122,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.2" data-path="DEPENDENCY.html">
+        <li class="chapter " data-level="2.2" data-path="../usage/DEPENDENCY.html">
             
-                <a href="DEPENDENCY.html">
+                <a href="../usage/DEPENDENCY.html">
             
                     
                     Dependency
@@ -142,9 +142,9 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="GENCONF_CLIENT.html">
+        <li class="chapter " data-level="3.1" data-path="../usage/GENCONF_CLIENT.html">
             
-                <a href="GENCONF_CLIENT.html">
+                <a href="../usage/GENCONF_CLIENT.html">
             
                     
                     Generate configuration
@@ -155,9 +155,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="DEPLOY_CLIENT.html">
+        <li class="chapter " data-level="3.2" data-path="../usage/DEPLOY_CLIENT.html">
             
-                <a href="DEPLOY_CLIENT.html">
+                <a href="../usage/DEPLOY_CLIENT.html">
             
                     
                     Deployment
@@ -175,9 +175,9 @@
         
         
     
-        <li class="chapter " data-level="4.1" data-path="GENCONF_SERVER.html">
+        <li class="chapter " data-level="4.1" data-path="../usage/GENCONF_SERVER.html">
             
-                <a href="GENCONF_SERVER.html">
+                <a href="../usage/GENCONF_SERVER.html">
             
                     
                     Generate configuration
@@ -188,9 +188,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2" data-path="DEPLOY_SERVER.html">
+        <li class="chapter " data-level="4.2" data-path="../usage/DEPLOY_SERVER.html">
             
-                <a href="DEPLOY_SERVER.html">
+                <a href="../usage/DEPLOY_SERVER.html">
             
                     
                     Deployment
@@ -208,9 +208,9 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="../develop/WORKFLOW.html">
+        <li class="chapter active" data-level="5.1" data-path="WORKFLOW.html">
             
-                <a href="../develop/WORKFLOW.html">
+                <a href="WORKFLOW.html">
             
                     
                     develop flow
@@ -271,7 +271,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Dependency</a>
+        <a href=".." >develop flow</a>
     </h1>
 </div>
 
@@ -286,20 +286,38 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="dependency">Dependency</h1>
-<ol>
-<li><p>Install <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank">docker 18.06</a></p>
-</li>
-<li><p>Install <code>docker-compose</code> command :</p>
-<ul>
-<li>x86 : docker-compose 1.22.0 <a href="https://docs.docker.com/compose/install/" target="_blank">reference</a>  </li>
-<li>armv6 : <code>pip install docker-compose</code></li>
-</ul>
-</li>
-<li><p>python &gt;= 3.5</p>
-</li>
-<li>python package <code>pyyaml</code></li>
-</ol>
+                                <h1 id="work-flow">Work flow</h1>
+<h3 id="download-the-project">Download the project</h3>
+<pre><code class="lang-bash">git <span class="hljs-built_in">clone</span> https://github.com/elespejo/sskcp.git
+<span class="hljs-built_in">cd</span> sskcp/
+</code></pre>
+<h3 id="build-docker-image">Build docker image</h3>
+<p>After modifying the Dockerfile, use the command below to build the docker  image:</p>
+<pre><code class="lang-bash">make mk-image ARCH=[arch]
+</code></pre>
+<p>The <code>arch</code> can be <code>x86</code> or <code>armv6</code>.
+This action build a docker image named <code>elespejo/sskcp-[arch]:latest</code> by using the resource in directory <code>image</code>.</p>
+<h3 id="clean-docker-image">Clean docker image</h3>
+<pre><code class="lang-bash">make clean-image ARCH=[arch]
+</code></pre>
+<h3 id="build-sskcp-client-x86-image-api">Build sskcp client x86 image API</h3>
+<pre><code class="lang-bash">make mk-deployment-SKC_x86 VERSION=[version]
+</code></pre>
+<h3 id="build-sskcp-server-x86-image-api">Build sskcp server x86 image API</h3>
+<pre><code class="lang-bash">make mk-deployment-SKS_x86 VERSION=[version]
+</code></pre>
+<h3 id="build-sskcp-client-armv6-image-api">Build sskcp client armv6 image API</h3>
+<pre><code class="lang-bash">make mk-deployment-SKC_armv6 VERSION=[version]
+</code></pre>
+<h3 id="build-configuration-generator">Build configuration generator</h3>
+<pre><code class="lang-bash">make mk-deployment-CONFGEN VERSION=[version]
+</code></pre>
+<h3 id="build-all-package">Build all package</h3>
+<pre><code class="lang-bash">make mk-deployment VERSION=[version]
+</code></pre>
+<h3 id="build-gitbook">Build gitbook</h3>
+<pre><code class="lang-bash">make mk-book
+</code></pre>
 
                                 
                                 </section>
@@ -327,12 +345,12 @@
 
             
                 
-                <a href="TOPOLOGY.html" class="navigation navigation-prev " aria-label="Previous page: Topology">
+                <a href="../usage/DEPLOY_SERVER.html" class="navigation navigation-prev " aria-label="Previous page: Deployment">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="GENCONF_CLIENT.html" class="navigation navigation-next " aria-label="Next page: Generate configuration">
+                <a href="../CHANGELOG.html" class="navigation navigation-next " aria-label="Next page: Change log">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -343,7 +361,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Dependency","level":"2.2","depth":1,"next":{"title":"Generate configuration","level":"3.1","depth":1,"path":"usage/GENCONF_CLIENT.md","ref":"usage/GENCONF_CLIENT.md","articles":[]},"previous":{"title":"Topology","level":"2.1","depth":1,"path":"usage/TOPOLOGY.md","ref":"usage/TOPOLOGY.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/DEPENDENCY.md","mtime":"2018-11-20T03:59:45.708Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-24T03:49:11.686Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"develop flow","level":"5.1","depth":1,"next":{"title":"Change log","level":"6.1","depth":1,"path":"CHANGELOG.md","ref":"CHANGELOG.md","articles":[]},"previous":{"title":"Deployment","level":"4.2","depth":1,"path":"usage/DEPLOY_SERVER.md","ref":"usage/DEPLOY_SERVER.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"develop/WORKFLOW.md","mtime":"2018-11-24T03:45:45.252Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-24T03:49:11.686Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

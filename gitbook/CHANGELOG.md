@@ -1,3 +1,16 @@
+# 0.4.8: add test interface
+
+### Update gitbook:
+1. update version to 0.4.8
+2. add test_config to doc
+3. add doc for developer
+4. update changelog to 0.4.8
+
+### Update imageAPI:
+1. add target 'test_config' in makefile
+2. check if file exists when target 'remove'
+
+
 # 0.4.7: update
 
 ### Update gitbook:

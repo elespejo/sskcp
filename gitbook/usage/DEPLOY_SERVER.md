@@ -15,9 +15,9 @@ wget https://github.com/elespejo/sskcp/releases/download/[VERSION]/[MODE]-server
   * MODE : ss or sskcp.
   * ARCH : the architecture of your machine. It can be x86 and armv6.
 
-  e.g : Deploy a sskcp server on a x86 machine with the release 0.4.7 by executing
+  e.g : Deploy a sskcp server on a x86 machine with the release 0.4.8 by executing
   ```bash
-  wget https://github.com/elespejo/sskcp/releases/download/0.4.7/sskcp-server-imageAPI-x86-0.4.7.zip
+  wget https://github.com/elespejo/sskcp/releases/download/0.4.8/sskcp-server-imageAPI-x86-0.4.8.zip
   ```
 
 ### Step 2: Unzip
@@ -69,7 +69,7 @@ Therefore a compose file named `7010.yml` is generated in `~/sskcp-server-imageA
 services:
   sskcp-server:
     command: supervisord -c /service.conf.d/sskcp-redir-x86.conf
-    image: elespejo/sskcp-x86:0.4.7
+    image: elespejo/sskcp-x86:0.4.8
     network_mode: host
     restart: always
     volumes:
@@ -81,6 +81,11 @@ services:
       type: bind
 version: '3.2'
 ```
+For testing configed instance , use another makefile target 'test_config':
+```bash
+make test_config NAME=[NAME]
+``` 
+
 
 ### Step 5: Start the instance
 Start the instance with the name you specified in the config step above.

@@ -204,11 +204,31 @@
 
     
         
+        <li class="header">For developer</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../develop/WORKFLOW.html">
+            
+                <a href="../develop/WORKFLOW.html">
+            
+                    
+                    develop flow
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
         <li class="header">Other</li>
         
         
     
-        <li class="chapter " data-level="5.1" data-path="../CHANGELOG.html">
+        <li class="chapter " data-level="6.1" data-path="../CHANGELOG.html">
             
                 <a href="../CHANGELOG.html">
             
@@ -280,8 +300,8 @@
 <li>MODE : ss or sskcp.</li>
 <li>ARCH : the architecture of your machine. It can be x86 and armv6.</li>
 </ul>
-<p>e.g : Deploy a sskcp client on a x86 machine with the release 0.4.7 by executing</p>
-<pre><code class="lang-bash">wget https://github.com/elespejo/sskcp/releases/download/0.4.7/sskcp-client-imageAPI-x86-0.4.7.zip
+<p>e.g : Deploy a sskcp client on a x86 machine with the release 0.4.8 by executing</p>
+<pre><code class="lang-bash">wget https://github.com/elespejo/sskcp/releases/download/0.4.8/sskcp-client-imageAPI-x86-0.4.8.zip
 </code></pre>
 </li>
 </ul>
@@ -327,7 +347,7 @@ make config CONF=~/conf/2010-123.45.67.8-7010 NAME=7010
 <span class="hljs-attr">services:</span>
 <span class="hljs-attr">  sskcp-client:</span>
 <span class="hljs-attr">    command:</span> supervisord -c /service.conf.d/sskcp-redir-x86.conf
-<span class="hljs-attr">    image:</span> elespejo/sskcp-x86:<span class="hljs-number">0.4</span><span class="hljs-number">.7</span>
+<span class="hljs-attr">    image:</span> elespejo/sskcp-x86:<span class="hljs-number">0.4</span><span class="hljs-number">.8</span>
 <span class="hljs-attr">    network_mode:</span> host
 <span class="hljs-attr">    restart:</span> always
 <span class="hljs-attr">    volumes:</span>
@@ -338,6 +358,9 @@ make config CONF=~/conf/2010-123.45.67.8-7010 NAME=7010
 <span class="hljs-attr">      target:</span> /clientlog
 <span class="hljs-attr">      type:</span> bind
 <span class="hljs-attr">version:</span> <span class="hljs-string">&apos;3.2&apos;</span>
+</code></pre>
+<p>For testing configed instance , use another makefile target &apos;test_config&apos;:</p>
+<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_config NAME=[NAME]
 </code></pre>
 <h3 id="step-5-start-the-instance">Step 5: Start the instance</h3>
 <p>Start the instance with the name you specified in the config step above.</p>
@@ -451,7 +474,7 @@ Removing 7010_sskcp-client_1 ... done
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Deployment","level":"3.2","depth":1,"next":{"title":"Generate configuration","level":"4.1","depth":1,"path":"usage/GENCONF_SERVER.md","ref":"usage/GENCONF_SERVER.md","articles":[]},"previous":{"title":"Generate configuration","level":"3.1","depth":1,"path":"usage/GENCONF_CLIENT.md","ref":"usage/GENCONF_CLIENT.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/DEPLOY_CLIENT.md","mtime":"2018-11-20T03:00:04.017Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-20T03:50:55.191Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Deployment","level":"3.2","depth":1,"next":{"title":"Generate configuration","level":"4.1","depth":1,"path":"usage/GENCONF_SERVER.md","ref":"usage/GENCONF_SERVER.md","articles":[]},"previous":{"title":"Generate configuration","level":"3.1","depth":1,"path":"usage/GENCONF_CLIENT.md","ref":"usage/GENCONF_CLIENT.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/DEPLOY_CLIENT.md","mtime":"2018-11-24T02:51:15.287Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-24T03:49:11.686Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
