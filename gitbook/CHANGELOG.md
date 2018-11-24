@@ -1,4 +1,4 @@
-# 0.4.8: add test interface
+# 0.4.9: add test interface
 
 ### Update gitbook:
 1. update version to 0.4.8
@@ -7,9 +7,11 @@
 4. update changelog to 0.4.8
 
 ### Update imageAPI:
-1. add target 'test_config' in makefile
-2. check if file exists when target 'remove'
-
+1. add target 'test_config'
+2. add target 'test_start'
+3. add target 'test_stop'
+4. add target 'test_restart'
+5. add target 'test_remove'
 
 # 0.4.7: update
 
