@@ -13,6 +13,10 @@ config:
 	docker-compose -p $(NAME) -f $(CURDIR)/docker-compose.yml config | tee $(COMP_DIR)/$(NAME).yml
 	rm $(ENV)
 
+.PHONY: test_config
+test_config:
+	docker-compose -f $(COMP_DIR)/$(NAME).yml config
+
 .PHONY: start
 start: $(COMP_DIR)/$(NAME).yml
 	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml up -d 
@@ -37,3 +41,4 @@ list: $(COMP_DIR)
 .PHONY: remove
 remove: $(COMP_DIR)/$(NAME).yml
 	rm $(COMP_DIR)/$(NAME).yml
+	ls $(COMP_DIR) | grep $(NAME)
