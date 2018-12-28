@@ -291,12 +291,7 @@
 <h3 id="step-3-modify-the-conf-info">Step 3: Modify the conf-info</h3>
 <p>Here is the template conf-info for sskcp client:</p>
 <pre><code class="lang-yaml"><span class="hljs-attr">client:</span>
-<span class="hljs-attr">  - mode:</span> [ss or sskcp]
-<span class="hljs-attr">    listenport:</span> [port]
-<span class="hljs-attr">    vpsip:</span> [ip]
-<span class="hljs-attr">    vpsport:</span> [port]
-<span class="hljs-attr">    key:</span> [key]
-<span class="hljs-attr">    log-dir:</span> [path]
+<span class="hljs-bullet">  -</span> { mode: [ss or sskcp], listenport: [port], vpsip: [ip], vpsport: [port], key: [key], log-dir: [path] }
 </code></pre>
 <p>The explanation of needed keywords:</p>
 <ul>
@@ -304,7 +299,7 @@
 <li>[listenport]: The port that the instance listens.</li>
 <li>[vpsip]: The vps ip where the instance sent data. </li>
 <li>[vpsport]: The vps port where the instance sent data.</li>
-<li>[key]: The password for client and server authorize each other.</li>
+<li>[key]: The password for client and server authorize each other. <strong>Please note that the key you filled here will not be used directly, a prefix will be added to it, e.g, <code>ss_[key]</code> for shadowsocks and <code>kcp_[key]</code> for kcp.</strong></li>
 <li>[log-dir]: The absolute path where the log directory created. The confgenerator will create a directory named <code>[listenport]-[vpsip]-[vpsport]</code> to store snmp log under this path.</li>
 </ul>
 <h3 id="step-4-use-confgenerator">Step 4: Use confgenerator</h3>
@@ -374,7 +369,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Generate configuration","level":"3.1","depth":1,"next":{"title":"Deployment","level":"3.2","depth":1,"path":"usage/DEPLOY_CLIENT.md","ref":"usage/DEPLOY_CLIENT.md","articles":[]},"previous":{"title":"Dependency","level":"2.2","depth":1,"path":"usage/DEPENDENCY.md","ref":"usage/DEPENDENCY.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/GENCONF_CLIENT.md","mtime":"2018-11-20T01:49:55.875Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-20T03:50:55.191Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Generate configuration","level":"3.1","depth":1,"next":{"title":"Deployment","level":"3.2","depth":1,"path":"usage/DEPLOY_CLIENT.md","ref":"usage/DEPLOY_CLIENT.md","articles":[]},"previous":{"title":"Dependency","level":"2.2","depth":1,"path":"usage/DEPENDENCY.md","ref":"usage/DEPENDENCY.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/GENCONF_CLIENT.md","mtime":"2018-12-28T02:04:12.353Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-28T02:10:11.905Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
