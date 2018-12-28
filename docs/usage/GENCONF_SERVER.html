@@ -1,0 +1,426 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Generate configuration · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="DEPLOY_SERVER.html" />
+    
+    
+    <link rel="prev" href="DEPLOY_CLIENT.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Overview</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="TOPOLOGY.html">
+            
+                <a href="TOPOLOGY.html">
+            
+                    
+                    Topology
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="DEPENDENCY.html">
+            
+                <a href="DEPENDENCY.html">
+            
+                    
+                    Dependency
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Deploy client</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="GENCONF_CLIENT.html">
+            
+                <a href="GENCONF_CLIENT.html">
+            
+                    
+                    Generate configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="DEPLOY_CLIENT.html">
+            
+                <a href="DEPLOY_CLIENT.html">
+            
+                    
+                    Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Deploy server</li>
+        
+        
+    
+        <li class="chapter active" data-level="4.1" data-path="GENCONF_SERVER.html">
+            
+                <a href="GENCONF_SERVER.html">
+            
+                    
+                    Generate configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="DEPLOY_SERVER.html">
+            
+                <a href="DEPLOY_SERVER.html">
+            
+                    
+                    Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">For developer</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../develop/WORKFLOW.html">
+            
+                <a href="../develop/WORKFLOW.html">
+            
+                    
+                    develop flow
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Other</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../CHANGELOG.html">
+            
+                <a href="../CHANGELOG.html">
+            
+                    
+                    Change log
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Generate configuration</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="generate-server-configuration">Generate server configuration</h1>
+<h3 id="step-1-download-the-configuration-generator">Step 1: Download the configuration generator</h3>
+<p>You can download the generator package from web page or command line.</p>
+<ul>
+<li><p>From web:<br>  Go to the <a href="https://github.com/elespejo/sskcp/releases" target="_blank">release page</a> of this project and download <code>sskcp-confgenerator-[VERSION].zip</code>.</p>
+</li>
+<li><p>From command line:  </p>
+<pre><code class="lang-bash">wget https://github.com/elespejo/sskcp/releases/download/[VERSION]/sskcp-confgenerator-[VERSION].zip
+</code></pre>
+<p>e.g, download configuration generator of version 0.4.8</p>
+<pre><code class="lang-bash">wget https://github.com/elespejo/sskcp/releases/download/0.4.8/sskcp-confgenerator-0.4.8.zip
+</code></pre>
+</li>
+</ul>
+<h3 id="step-2-unzip">Step 2: Unzip</h3>
+<pre><code class="lang-bash">unzip sskcp-confgenerator-[VERSION].zip
+<span class="hljs-built_in">cd</span> sskcp-confgenerator/
+</code></pre>
+<p>e.g:</p>
+<pre><code class="lang-bash">unzip sskcp-confgenerator-0.4.8.zip
+<span class="hljs-built_in">cd</span> sskcp-confgenerator/
+</code></pre>
+<h3 id="step-3-modify-the-conf-info">Step 3: Modify the conf-info</h3>
+<p>Here is the template conf-info for sskcp server:</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">server:</span>
+<span class="hljs-bullet">  -</span> {mode: [ss or sskcp], listenport: [port], key: [key], log-dir: [path]}
+</code></pre>
+<p>The explanation of needed keywords:</p>
+<ul>
+<li>[mode]: The mode of the instance. It can be <code>ss</code> or <code>sskcp</code>.</li>
+<li>[listenport]: The port that the instance listens.</li>
+<li>[key]: The password for client and server authorize each other. <strong>Please note that the key you filled here will not be used directly, a prefix will be added to it, e.g, <code>ss_[key]</code> for shadowsocks and <code>kcp_[key]</code> for kcp.</strong></li>
+<li>[log-dir]: The absolute path where the log directory created. The confgenerator will create a directory named <code>[listenport]</code> to store snmp log under this path.</li>
+</ul>
+<h3 id="step-4-use-confgenerator">Step 4: Use confgenerator</h3>
+<pre><code class="lang-bash">python -m confgenerator.cli server <span class="hljs-_">-f</span> [conf-info] <span class="hljs-_">-d</span> [dest]
+</code></pre>
+<p>The explanation of arguments:</p>
+<ul>
+<li>[conf-info]: the absolute path of conf-info file.</li>
+<li>[dest]: the absolute path for configuration generation.</li>
+</ul>
+<h3 id="step-4-validation">Step 4: validation</h3>
+<p>After generation, A configuration directory named <code>[listenport]</code> is generated in [dest].</p>
+<pre><code class="lang-bash">tree [dest]/
+[dest]
+&#x2514;&#x2500;&#x2500; [listenport]
+    &#x251C;&#x2500;&#x2500; conf
+    &#x2502;   &#x251C;&#x2500;&#x2500; kcp.json <span class="hljs-comment"># if mode is ss, this file is not exists.</span>
+    &#x2502;   &#x2514;&#x2500;&#x2500; ss.json 
+    &#x2514;&#x2500;&#x2500; config.env
+</code></pre>
+<p>Also, A log directory named <code>[listenport]</code> is created in [log-dir].</p>
+<pre><code class="lang-bash">tree [<span class="hljs-built_in">log</span>-dir]
+[<span class="hljs-built_in">log</span>-dir]
+&#x2514;&#x2500;&#x2500; [listenport]
+</code></pre>
+<p>Log files will consistently generated after instance started.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="DEPLOY_CLIENT.html" class="navigation navigation-prev " aria-label="Previous page: Deployment">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="DEPLOY_SERVER.html" class="navigation navigation-next " aria-label="Next page: Deployment">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Generate configuration","level":"4.1","depth":1,"next":{"title":"Deployment","level":"4.2","depth":1,"path":"usage/DEPLOY_SERVER.md","ref":"usage/DEPLOY_SERVER.md","articles":[]},"previous":{"title":"Deployment","level":"3.2","depth":1,"path":"usage/DEPLOY_CLIENT.md","ref":"usage/DEPLOY_CLIENT.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/GENCONF_SERVER.md","mtime":"2018-12-28T02:11:18.741Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-28T02:16:09.939Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
