@@ -1,14 +1,3 @@
 client:
-  - mode: sskcp
-    listenport: 2010
-    vpsip: 1.1.1.1
-    vpsport: 7010
-    key: test1
-    log-dir: /home/USER/log
-
-  - mode: sskcp
-    listenport: 2020
-    vpsip: 2.2.2.2
-    vpsport: 7020
-    key: test2
-    log-dir: /home/USER/log
+  - { mode: sskcp, log-dir: /home/USER/snmplog, listenport: 2010, vpsip: 1.1.1.1, vpsport: 7010, key: test }
+  - { mode: sskcp, log-dir: /home/USER/snmplog, listenport: 2020, vpsip: 1.1.1.1, vpsport: 7020, key: test } 
