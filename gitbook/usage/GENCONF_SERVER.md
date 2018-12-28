@@ -31,15 +31,12 @@ cd sskcp-confgenerator/
 Here is the template conf-info for sskcp server:
 ```yaml
 server:
-  - mode: [ss or sskcp]
-    listenport: [port]
-    key: [key]
-    log-dir: [path]
+  - {mode: [ss or sskcp], listenport: [port], key: [key], log-dir: [path]}
 ```
 The explanation of needed keywords:
 * [mode]: The mode of the instance. It can be `ss` or `sskcp`.
 * [listenport]: The port that the instance listens.
-* [key]: The password for client and server authorize each other.
+* [key]: The password for client and server authorize each other. **Please note that the key you filled here will not be used directly, a prefix will be added to it, e.g, `ss_[key]` for shadowsocks and `kcp_[key]` for kcp.**
 * [log-dir]: The absolute path where the log directory created. The confgenerator will create a directory named `[listenport]` to store snmp log under this path.
 
 ### Step 4: Use confgenerator
