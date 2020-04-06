@@ -1,7 +1,7 @@
 FROM alpine:3.8
 
 # build shadowsocks-libev
-ENV SS_VER 3.2.0 
+ENV SS_VER 3.3.4 
 ENV SS_URL https://github.com/shadowsocks/shadowsocks-libev/releases/download/v$SS_VER/shadowsocks-libev-$SS_VER.tar.gz 
 
 
@@ -38,7 +38,7 @@ RUN set -ex \
 RUN apk add --update bash
 
 # build kcptun
-ENV KCP_VER 20181002
+ENV KCP_VER 20200201
 ENV KCP_URL https://github.com/xtaci/kcptun/releases/download/v$KCP_VER/kcptun-linux-amd64-$KCP_VER.tar.gz
 
 RUN apk update && \
