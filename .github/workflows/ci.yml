@@ -1,0 +1,22 @@
+name: CI for sskcp 
+on:
+  push:
+    branches:
+      - master
+      - develop
+    tags: 
+      - [0-9]+.[0-9]+.[0-9]+
+jobs:
+  ci:
+    strategy:
+      matrix:
+        ARCH: [armv6, x86]
+      steps:
+        - name: pull repo
+          uses: actions/checkout@v3
+        - name: create image and zip
+          run: |
+            echo ${{ ARCH }}
+            echo ${{ github.ref_name }}
+            #make mk-image ARCH=${{ ARCH }}  
+            #make mk-deployment VERSION=${{ github.ref_name }}
