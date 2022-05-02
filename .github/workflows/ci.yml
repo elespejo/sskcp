@@ -18,7 +18,7 @@ jobs:
       - name: create image and zip
         run: |
           docker version
-          make mk-image ARCH=${{ ARCH }}  
+          make mk-image ARCH=${{ matrix.arch }}  
           make mk-deployment VERSION=${{ github.ref_name }}
         shell: bash
       - name: release a new version
