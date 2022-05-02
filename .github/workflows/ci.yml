@@ -17,7 +17,8 @@ jobs:
         uses: actions/checkout@v3
       - name: create image and zip
         run: |
-          echo "${{ matrix.arch }}"
+          echo "${{ matrix }}"
           echo "${{ github.ref_name }}"
+        shell: bash
           #make mk-image ARCH=${{ ARCH }}  
           #make mk-deployment VERSION=${{ github.ref_name }}
