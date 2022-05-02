@@ -10,14 +10,14 @@ jobs:
   ci:
     strategy:
       matrix:
-        ARCH: [armv6, x86]
+        arch: [armv6, x86]
     runs-on: ubuntu-latest
     steps:
       - name: pull repo
         uses: actions/checkout@v3
       - name: create image and zip
         run: |
-          echo ${{ matrix.ARCH }}
+          echo ${{ matrix.arch }}
           echo ${{ github.ref_name }}
           #make mk-image ARCH=${{ ARCH }}  
           #make mk-deployment VERSION=${{ github.ref_name }}
