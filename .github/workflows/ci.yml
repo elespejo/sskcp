@@ -11,6 +11,7 @@ jobs:
     strategy:
       matrix:
         ARCH: [armv6, x86]
+    runs-on: ubuntu-latest
     steps:
       - name: pull repo
         uses: actions/checkout@v3
